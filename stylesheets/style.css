@@ -1,0 +1,156 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: #f2f4f3;
+}
+
+html {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+#entry-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: transform 2000ms ease-in-out 300ms;
+  z-index: 4;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#entry-container #entry-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
+  transition: transform 1000ms ease-in-out;
+}
+#entry-container #entry-text-container h1 {
+  font-family: "Rhastelie", sans-serif;
+  font-weight: 400;
+  font-size: 6rem;
+}
+#entry-container #entry-text-container p {
+  font-family: basic-sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+#entry-container #entry-button {
+  all: unset;
+  border: #f2f4f3 solid 3px;
+  padding: 10px 20px;
+  font-family: basic-sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  transition: transform 300ms ease-out, background-color 300ms ease-out, color 300ms ease-out, opacity 300ms ease-out;
+  cursor: pointer;
+}
+#entry-container #entry-button[data-state=hidden] {
+  opacity: 0;
+}
+#entry-container #entry-button:hover {
+  transform: scale(0.9);
+  color: #1d1d1d;
+  background-color: #f2f4f3;
+}
+#entry-container #entry-bg {
+  height: 150%;
+  width: 150%;
+  background-color: blueviolet;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  transition: height 2000ms ease-in-out;
+}
+#entry-container[data-state=hidden] {
+  transform: translateY(-100%);
+}
+#entry-container[data-state=hidden] #entry-text-container {
+  transform: translateY(-100%);
+}
+#entry-container[data-state=hidden] #entry-bg {
+  height: 20px;
+}
+
+#main-container {
+  height: 100vh;
+  width: 100%;
+  background-color: #1d1d1d;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+}
+#main-container #main-profile-container {
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+#main-container #main-profile-container #profile-pic {
+  width: 100px;
+  aspect-ratio: 1;
+  border-radius: 10px;
+  border: #f2f4f3 solid 2px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+#main-container #main-profile-container #profile-name {
+  font-family: basic-sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+#main-container #main-profile-container #profile-username {
+  font-family: "Rhastelie", sans-serif;
+  font-weight: 400;
+  font-size: 4rem;
+}
+#main-container #main-profile-container #main-profile-socials-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+#main-container #main-profile-container #main-profile-socials-container img {
+  aspect-ratio: 1;
+  width: 35px;
+  transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+#main-container #main-profile-container #main-profile-socials-container img:hover {
+  transform: scale(0.9);
+  opacity: 1;
+}
+#main-container #main-profile-container #main-profile-socials-container:hover img:not(:hover) {
+  opacity: 0.5;
+}
+#main-container #main-profile-container #contact-button {
+  all: unset;
+  font-family: basic-sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  border: #f2f4f3 solid 2px;
+  padding: 10px 30px;
+  box-sizing: border-box;
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out, transform 300ms ease-in-out;
+  cursor: pointer;
+}
+#main-container #main-profile-container #contact-button:hover {
+  background-color: #f2f4f3;
+  color: #1d1d1d;
+  transform: scale(0.95);
+}/*# sourceMappingURL=style.css.map */
