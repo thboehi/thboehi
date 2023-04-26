@@ -3,13 +3,13 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html lang="xyz">
+<html lang="xyz" style="overflow: hidden;">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Thomas Boehi | WAXIE</title>
         <meta name="description" content="Portfolio de Thomas Boehi, ou WAXIE. Étudiant suisse en technologie web.">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
         <link rel="stylesheet" href="./stylesheets/style.css">
         <!-- <link rel="icon" type="image/x-icon" href="/images/"> -->
         <link href="https://fonts.cdnfonts.com/css/rhastelie" rel="stylesheet">
@@ -21,11 +21,12 @@
         <meta content="" property="og:url">
         <meta content="" property="og:image">
         <meta name="twitter:card" content="summary_large_image">
-        <meta content="#1d1d1d" data-react-helmet="true" name="theme-color">
+        <meta content="#000" data-react-helmet="true" name="theme-color">
     </head>
-    <body>
+    <body onload="toTop()">
         <!-- ENTRY PAGE -->
-        <div id="entry-container" data-state="visible">
+        <!-- BE CAREFUL, MUST BE ON VISIBLE BY DEFAULT, HIDDEN FOR DEBUG -->
+        <div id="entry-container" data-state="hidden">
             <div id="entry-text-container">
                 <h1>WAXIE</h1>
                 <p>.webdev</p>
@@ -37,20 +38,71 @@
 
         <!-- MAIN PAGE -->
         <div id="main-container">
+            <div id="main-banner"></div>
+            <div id="main-banner-gradient"></div>
             <div id="main-profile-container">
-                <img id="profile-pic" src="./images/noir.png" alt="Thomas">
+                <img id="profile-pic" src="./images/noir.png" alt="Thomas" draggable="false">
                 <p id="profile-name">Thoma Boehi</p>
                 <h2 id="profile-username">WAXIE</h2>
                 <div id="main-profile-socials-container">
-                    <a href="#"><img src="./images/socials/linkedin.svg" alt="LinkedIn link"></a>
-                    <a href="#"><img src="./images/socials/github.svg" alt="Github link"></a>
-                    <a href="#"><img src="./images/socials/behance.svg" alt="Behance link"></a>
-                    <a href="#"><img src="./images/socials/instagram.svg" alt="Instagram link"></a>
+                    <a href="https://linkedin.com/in/thboehi" target="_blank"><img src="./images/socials/linkedin.svg" alt="LinkedIn link"></a>
+                    <a href="https://github.com/thboehi" target="_blank"><img src="./images/socials/github.svg" alt="Github link"></a>
+                    <a href="https://www.behance.net/waxie" target="_blank"><img src="./images/socials/behance.svg" alt="Behance link"></a>
+                    <a href="https://instagram.com/thboehi" target="_blank"><img src="./images/socials/instagram.svg" alt="Instagram link"></a>
                 </div>
-                <button id="contact-button" onclick="">Contacter</button>
+                <button id="contact-button" onclick="openForm()">Contacter</button>
+            </div>
+            <div id="main-project-container">
+                <h3 id="main-project-title">Projects</h3>
+                <div id="project-container">
+                    <button id="button-previous" onclick="previousProject()">‹</button>
+                    <div class="image-container" onclick="window.open(`https://thboehi.github.io/The-Fork/`);">
+                        <img class="project-image" src="./images/projects/thefork.png" alt="The Fork">
+                        <div class="image-colorizer"></div>
+                        <h3 class="project-title">The Fork</h3>
+                        <p class="project-description">A website for a fictional restaurant on the shores of Lake Geneva in Switzerland.</p>
+                    </div>
+                    <button id="button-next" onclick="nextProject()">›</button>
+                </div>
             </div>
         </div>
         <!-- END OF MAIN PAGE -->
-        <script src="./index.js" async defer></script>
+
+        <!-- FORMULAIRE PAGE -->
+        <!-- BE CAREFUL, MUST BE ON HIDDEN BY DEFAULT, VISIBLE FOR DEBUG -->
+        <div id="form-container" data-state="visible">
+            <div id="form-back-container" onclick="closeForm()">
+                <img src="./images/back.svg" alt="Go back" draggable="false">
+            </div>
+            <div id="form-formulaire-container">
+                <h1>Formulaire</h1>
+                <p>de contact</p>
+                <form action="#">
+                    <div class="form-input-container">
+                        <label for="name">Nom et Prénom *</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="form-input-container">
+                        <label for="entreprise">Entreprise</label>
+                        <input type="text" name="entreprise" id="entreprise">
+                    </div>
+                    <div class="form-input-container">
+                        <label for="phone">Téléphone *</label>
+                        <input type="number" name="phone" id="phone">
+                    </div>
+                    <div class="form-input-container">
+                        <label for="email">Email *</label>
+                        <input type="text" name="email" id="email">
+                    </div>
+                    <div class="form-input-container">
+                        <label for="message">Message</label>
+                        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                    </div>
+                </form>
+            </div>
+            <span id="form-bg"></span>
+        </div>
+        <!-- END OF FORMULAIRE PAGE -->
+        <script src="./index.js" async></script>
     </body>
 </html>

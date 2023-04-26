@@ -2,17 +2,22 @@
   margin: 0;
   padding: 0;
   color: #f2f4f3;
+  touch-action: manipulation;
 }
 
 html {
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
+  overflow-x: hidden;
+  background-color: #29335c;
 }
 
+@media screen and (max-width: 768px) {
+  #main-container #main-project-container {
+    width: calc(100vw - 20px);
+  }
+}
 #entry-container {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,6 +36,9 @@ html {
   margin-bottom: 100px;
   transition: transform 1000ms ease-in-out;
 }
+#entry-container #entry-text-container h1, #entry-container #entry-text-container p {
+  color: #f2f4f3;
+}
 #entry-container #entry-text-container h1 {
   font-family: "Rhastelie", sans-serif;
   font-weight: 400;
@@ -48,6 +56,7 @@ html {
   font-family: basic-sans, sans-serif;
   font-weight: 400;
   font-style: normal;
+  border-radius: 5px;
   transition: transform 300ms ease-out, background-color 300ms ease-out, color 300ms ease-out, opacity 300ms ease-out;
   cursor: pointer;
 }
@@ -58,11 +67,12 @@ html {
   transform: scale(0.9);
   color: #1d1d1d;
   background-color: #f2f4f3;
+  font-weight: 600;
 }
 #entry-container #entry-bg {
   height: 150%;
   width: 150%;
-  background-color: blueviolet;
+  background-color: #ff595e;
   border-radius: 50%;
   display: inline-block;
   position: absolute;
@@ -83,17 +93,38 @@ html {
 }
 
 #main-container {
-  height: 100vh;
   width: 100%;
+  min-height: 100vh;
   background-color: #1d1d1d;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: -10;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+}
+#main-container #main-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: url(../images/banner.jpg);
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+  z-index: -8;
+}
+#main-container #main-banner-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  background: rgb(29, 29, 29);
+  background: linear-gradient(0deg, rgb(29, 29, 29) 0%, rgba(29, 29, 29, 0) 100%);
+  z-index: -7;
 }
 #main-container #main-profile-container {
   margin-top: 100px;
@@ -119,7 +150,7 @@ html {
 #main-container #main-profile-container #profile-username {
   font-family: "Rhastelie", sans-serif;
   font-weight: 400;
-  font-size: 4rem;
+  font-size: 2rem;
 }
 #main-container #main-profile-container #main-profile-socials-container {
   display: flex;
@@ -144,13 +175,244 @@ html {
   font-weight: 400;
   font-style: normal;
   border: #f2f4f3 solid 2px;
-  padding: 10px 30px;
+  padding: 5px 20px;
+  border-radius: 5px;
   box-sizing: border-box;
-  transition: background-color 300ms ease-in-out, color 300ms ease-in-out, transform 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out, transform 300ms ease-in-out, font-weight 300ms ease-in-out;
   cursor: pointer;
 }
 #main-container #main-profile-container #contact-button:hover {
   background-color: #f2f4f3;
   color: #1d1d1d;
   transform: scale(0.95);
+  font-weight: 600;
+}
+#main-container #main-project-container {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+#main-container #main-project-container #main-project-title {
+  font-family: "Rhastelie", sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+#main-container #main-project-container #project-container {
+  display: flex;
+  flex-direction: row;
+}
+#main-container #main-project-container #project-container button {
+  box-sizing: border-box;
+  width: 60px;
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 3rem;
+  opacity: 0.5;
+  cursor: pointer;
+  transition: opacity 300ms ease-in-out;
+}
+#main-container #main-project-container #project-container button:hover {
+  opacity: 1;
+}
+#main-container #main-project-container #project-container .image-container {
+  aspect-ratio: 16/9;
+  width: 480px;
+  background-color: none;
+  overflow: hidden;
+  position: relative;
+  overflow: hidden;
+  transition: transform 300ms ease-in-out 300ms, border 300ms ease-in-out;
+  border: transparent solid 3px;
+  cursor: pointer;
+}
+#main-container #main-project-container #project-container .image-container img {
+  position: absolute;
+  width: 480px;
+  height: auto;
+  aspect-ratio: 16/9;
+  top: 0;
+  left: 0;
+  transition: filter 300ms ease-in-out;
+}
+#main-container #main-project-container #project-container .image-container .image-colorizer {
+  aspect-ratio: 16/9;
+  width: 480px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #1d1d1d;
+  opacity: 0;
+  transition: opacity 300ms ease-in-out;
+}
+#main-container #main-project-container #project-container .image-container h3, #main-container #main-project-container #project-container .image-container p {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: top 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+#main-container #main-project-container #project-container .image-container h3 {
+  top: 30%;
+  left: 50%;
+  font-family: "Rhastelie", sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+}
+#main-container #main-project-container #project-container .image-container p {
+  top: 70%;
+  left: 50%;
+  font-family: basic-sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+}
+#main-container #main-project-container #project-container .image-container:hover {
+  transform: scale(0.98);
+  border: #f2f4f3 solid 3px;
+  transition: transform 300ms ease-in-out, border 300ms ease-in-out 300ms;
+}
+#main-container #main-project-container #project-container .image-container:hover img {
+  filter: blur(4px);
+}
+#main-container #main-project-container #project-container .image-container:hover .image-colorizer {
+  opacity: 0.75;
+}
+#main-container #main-project-container #project-container .image-container:hover h3, #main-container #main-project-container #project-container .image-container:hover p {
+  transition: top 300ms ease-in-out 300ms, opacity 300ms ease-in-out 300ms;
+}
+#main-container #main-project-container #project-container .image-container:hover h3 {
+  top: 40%;
+  left: 50%;
+  opacity: 1;
+}
+#main-container #main-project-container #project-container .image-container:hover p {
+  top: 60%;
+  left: 50%;
+  opacity: 1;
+}
+
+#form-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: transform 2000ms ease-in-out 300ms;
+  z-index: 6;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#form-container #form-back-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  width: 75px;
+  height: 75px;
+}
+#form-container #form-back-container img {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+}
+#form-container #form-back-container img:hover {
+  transform: scale(0.9);
+  opacity: 1;
+}
+#form-container #form-formulaire-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 100px;
+  transition: transform 1000ms ease-in-out;
+}
+#form-container #form-formulaire-container h1 {
+  font-family: "Rhastelie", sans-serif;
+  font-weight: 400;
+  font-size: 2rem;
+}
+#form-container #form-formulaire-container p {
+  font-family: basic-sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+#form-container #form-formulaire-container form {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+#form-container #form-formulaire-container form .form-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 20px;
+  font-family: basic-sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+#form-container #form-formulaire-container form .form-input-container input {
+  background-color: unset;
+  border: none;
+  border-bottom: #f2f4f3 solid 2px;
+  outline: none;
+  font-family: basic-sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  transition: background-color 300ms ease-in-out;
+  padding: 5px;
+  border-radius: 0;
+}
+#form-container #form-formulaire-container form .form-input-container input:focus, #form-container #form-formulaire-container form .form-input-container textarea:focus {
+  background-color: rgba(242, 244, 243, 0.2941176471);
+}
+#form-container #form-formulaire-container form .form-input-container textarea {
+  background-color: unset;
+  border: none;
+  border: #f2f4f3 solid 2px;
+  outline: none;
+  font-family: basic-sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  resize: none;
+  padding: 5px;
+  transition: background-color 300ms ease-in-out;
+  border-radius: 0;
+}
+#form-container #form-formulaire-container form .form-input-container label {
+  opacity: 0.5;
+  transition: opacity 300ms ease-in-out;
+}
+#form-container #form-formulaire-container form .form-input-container:has(input:focus) label, #form-container #form-formulaire-container form .form-input-container:has(textarea:focus) label {
+  opacity: 1;
+}
+#form-container #form-bg {
+  height: 150%;
+  width: 150%;
+  background-color: #29335c;
+  border-radius: 50%;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  transition: width 2000ms ease-in-out, height 0ms ease;
+}
+#form-container[data-state=hidden] {
+  transform: translateX(100%);
+}
+#form-container[data-state=hidden] #form-back-container img {
+  opacity: 0;
+}
+#form-container[data-state=hidden] #form-formulaire-container {
+  transform: translateX(100%);
+}
+#form-container[data-state=hidden] #form-bg {
+  transition: height 0ms ease 2000ms, width 2000ms ease-in-out;
+  height: 10px;
+  width: 20px;
 }/*# sourceMappingURL=style.css.map */
