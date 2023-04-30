@@ -20,6 +20,19 @@ let projectDescription = document.querySelector(".project-description")
 let projectContainer = document.querySelector(".image-container")
 //Boolean to prevent opening the form before it has finished closing it
 let closingForm = false
+//Define different Regex needed for form validation
+let regexNameSurname = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,}$/u;
+// let regexAddress = /^.{2,} [1-9]{1,4}$/m;
+// let regexZip = /^[1-9]\d{3}$/;
+// let regexCity = /.{4,}/;
+let regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+let regexPhone = /(\b(0041|0)|\B\+41)(\s?\(0\))?(\s)?[1-9]{2}(\s)?[0-9]{3}(\s)?[0-9]{2}(\s)?[0-9]{2}\b/;
+
+//Boolean to check if the input fields are corrects or not. By default on false
+let nameCorrect = false
+let phoneCorrect = false
+let emailCorrect = false
+let messageCorrect = false
 
 function toTop(){
     setTimeout(function() {
@@ -75,6 +88,77 @@ function closeForm(){
         closingForm = false
     }, 2200);
 }
+
+function checkInput(type) {
+    switch (type){
+        case "name":
+            setTimeout(function() {
+                toTop()
+            }, 10);
+            if (regexNameSurname.test(document.getElementById(type).value)){
+                console.log("ça passe")
+                document.getElementById(`${type}-ok`).setAttribute("data-state", "visible")
+                document.getElementById(`${type}-wrong`).setAttribute("data-state", "hidden")
+                document.getElementById(type).setAttribute("data-missing", "false")
+                nameCorrect = true
+            } else {
+                document.getElementById(`${type}-ok`).setAttribute("data-state", "hidden")
+                document.getElementById(`${type}-wrong`).setAttribute("data-state", "visible")
+                nameCorrect = false
+            }
+            break;
+        case "phone":
+            if (regexPhone.test(document.getElementById(type).value)){
+                console.log("ça passe")
+                document.getElementById(`${type}-ok`).setAttribute("data-state", "visible")
+                document.getElementById(`${type}-wrong`).setAttribute("data-state", "hidden")
+                document.getElementById(type).setAttribute("data-missing", "false")
+                phoneCorrect = true
+            } else {
+                document.getElementById(`${type}-ok`).setAttribute("data-state", "hidden")
+                document.getElementById(`${type}-wrong`).setAttribute("data-state", "visible")
+                phoneCorrect = false
+            }
+            break;
+        case "email":
+            if (regexEmail.test(document.getElementById(type).value)){
+                console.log("ça passe")
+                document.getElementById(`${type}-ok`).setAttribute("data-state", "visible")
+                document.getElementById(`${type}-wrong`).setAttribute("data-state", "hidden")
+                document.getElementById(type).setAttribute("data-missing", "false")
+                emailCorrect = true
+            } else {
+                document.getElementById(`${type}-ok`).setAttribute("data-state", "hidden")
+                document.getElementById(`${type}-wrong`).setAttribute("data-state", "visible")
+                emailCorrect = false
+            }
+            break;
+        case "entreprise":
+            break;
+        default:
+            console.log(`Error:\nNo correct type defined\nType: ${type}`)
+    }
+}
+
+function sendForm(){
+    if (!nameCorrect){
+        document.getElementById("name").setAttribute("data-missing", "true")
+    }
+    if (!phoneCorrect){
+        document.getElementById("phone").setAttribute("data-missing", "true")
+    }
+    if (!emailCorrect){
+        document.getElementById("email").setAttribute("data-missing", "true")
+    }
+    if (emailCorrect && phoneCorrect && emailCorrect){
+        alert("BRAVO")
+    } else {
+        alert("Shit happens")
+    }
+}
+window.addEventListener("scroll", event => {
+    console.log(htmlDoc.scrollTop)
+} )
 
 //DEBUG, REMOVE FOR RELEASE
 // enterWebsite()

@@ -79,26 +79,35 @@
                 <p>de contact</p>
                 <form action="#">
                     <div class="form-input-container">
+                        <img src="./images/wrong.svg" alt="Wrong" data-state="hidden" id="name-wrong" class="input-wrong">
+                        <img src="./images/ok.svg" alt="Ok" data-state="hidden" id="name-ok" class="input-ok">
                         <label for="name">Nom et Prénom *</label>
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="name" onblur="checkInput('name')" data-missing="false">
                     </div>
                     <div class="form-input-container">
+                        <img src="./images/wrong.svg" alt="Wrong" data-state="hidden" id="entreprise-wrong" class="input-wrong">
+                        <img src="./images/ok.svg" alt="Ok" data-state="hidden" id="entreprise-ok" class="input-ok">
                         <label for="entreprise">Entreprise</label>
-                        <input type="text" name="entreprise" id="entreprise">
+                        <input type="text" name="entreprise" id="entreprise" onblur="checkInput('entreprise')">
                     </div>
                     <div class="form-input-container">
+                        <img src="./images/wrong.svg" alt="Wrong" data-state="hidden" id="phone-wrong" class="input-wrong">
+                        <img src="./images/ok.svg" alt="Ok" data-state="hidden" id="phone-ok" class="input-ok">
                         <label for="phone">Téléphone *</label>
-                        <input type="number" name="phone" id="phone">
+                        <input type="number" name="phone" id="phone" onblur="checkInput('phone')" data-missing="false">
                     </div>
                     <div class="form-input-container">
+                        <img src="./images/wrong.svg" alt="Wrong" data-state="hidden" id="email-wrong" class="input-wrong">
+                        <img src="./images/ok.svg" alt="Ok" data-state="hidden" id="email-ok" class="input-ok">
                         <label for="email">Email *</label>
-                        <input type="text" name="email" id="email">
+                        <input type="text" name="email" id="email" onblur="checkInput('email')" data-missing="false">
                     </div>
                     <div class="form-input-container">
                         <label for="message">Message</label>
-                        <textarea name="message" id="message" cols="30" rows="10"></textarea>
+                        <textarea name="message" id="message" cols="30" rows="10" data-missing="false"></textarea>
                     </div>
                 </form>
+                <button id="form-button-submit" onclick="sendForm()">Envoyer</button>
             </div>
             <span id="form-bg"></span>
         </div>

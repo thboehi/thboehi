@@ -9,9 +9,17 @@ $lighttransparent: #f2f4f34b;
     touch-action: manipulation;
 
 }
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button,
+input {
+  appearance: none;
+}
+
 html{
     overflow-x: hidden;
-    background-color: #29335c;
+    background-color: $dark;
 }
 
 @media screen and (max-width: 768px){
@@ -329,7 +337,6 @@ html{
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        margin-bottom: 100px;
         transition: transform 1000ms ease-in-out;
         h1{
             font-family: 'Rhastelie', sans-serif;
@@ -353,6 +360,22 @@ html{
                 font-family: basic-sans, sans-serif;
                 font-weight: 400;
                 font-style: normal;
+                position: relative;
+                img{
+                    position: absolute;
+                    top: 32px; right: 5px;
+                    aspect-ratio: 1;
+                    width: 15px;
+                    user-select: none;
+                    opacity: 1;
+                    pointer-events: none;
+                    &[data-state="hidden"]{
+                        opacity: 0;
+                    }
+                }
+                .input-wrong[data-state="visible"]{
+                    animation: bounce 500ms;
+                }
                 input{
                     background-color: unset;
                     border: none;
@@ -364,13 +387,15 @@ html{
                     transition: background-color 300ms ease-in-out;
                     padding: 5px;
                     border-radius: 0;
+                    &[data-missing="true"]{
+                        background-color: rgba(255, 0, 0, 0.3);
+                    }
                 }
                 input:focus, textarea:focus{
                     background-color: $lighttransparent;
                 }
                 textarea{
                     background-color: unset;
-                    border: none;
                     border: $light solid 2px;
                     outline: none;
                     font-family: basic-sans, sans-serif;
@@ -389,6 +414,24 @@ html{
                     opacity: 1;
                 }
             }
+        }
+    }
+    #form-button-submit{
+        all: unset;
+        margin-top: 20px;
+        border: $light solid 2px;
+        padding: 10px 20px;
+        font-family: basic-sans, sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        // border-radius: 5px;
+        transition: transform 300ms ease-out, background-color 300ms ease-out, color 300ms ease-out, opacity 300ms ease-out;
+        cursor: pointer;
+        &:hover{
+            transform: scale(0.95);
+            color: $dark;
+            background-color: $light;
+            font-weight: 600;
         }
     }
     #form-bg{
@@ -421,5 +464,32 @@ html{
             width: 20px;
         }
         
+    }
+}
+
+@keyframes bounce {
+    0%{
+        transform: translateX(0px);
+    }
+    15%{
+        transform: translateX(-10px);
+    }
+    30%{
+        transform: translateX(10px);
+    }
+    45%{
+        transform: translateX(-5px);
+    }
+    60%{
+        transform: translateX(5px);
+    }
+    75%{
+        transform: translateX(-1px);
+    }
+    90%{
+        transform: translate(1px);
+    }
+    100%{
+        transform: translateX(0px);
     }
 }

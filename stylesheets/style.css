@@ -5,9 +5,17 @@
   touch-action: manipulation;
 }
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button,
+input {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
 html {
   overflow-x: hidden;
-  background-color: #29335c;
+  background-color: #1d1d1d;
 }
 
 @media screen and (max-width: 768px) {
@@ -327,7 +335,6 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-bottom: 100px;
   transition: transform 1000ms ease-in-out;
 }
 #form-container #form-formulaire-container h1 {
@@ -353,6 +360,25 @@ html {
   font-family: basic-sans, sans-serif;
   font-weight: 400;
   font-style: normal;
+  position: relative;
+}
+#form-container #form-formulaire-container form .form-input-container img {
+  position: absolute;
+  top: 32px;
+  right: 5px;
+  aspect-ratio: 1;
+  width: 15px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  opacity: 1;
+  pointer-events: none;
+}
+#form-container #form-formulaire-container form .form-input-container img[data-state=hidden] {
+  opacity: 0;
+}
+#form-container #form-formulaire-container form .form-input-container .input-wrong[data-state=visible] {
+  animation: bounce 500ms;
 }
 #form-container #form-formulaire-container form .form-input-container input {
   background-color: unset;
@@ -366,12 +392,14 @@ html {
   padding: 5px;
   border-radius: 0;
 }
+#form-container #form-formulaire-container form .form-input-container input[data-missing=true] {
+  background-color: rgba(255, 0, 0, 0.3);
+}
 #form-container #form-formulaire-container form .form-input-container input:focus, #form-container #form-formulaire-container form .form-input-container textarea:focus {
   background-color: rgba(242, 244, 243, 0.2941176471);
 }
 #form-container #form-formulaire-container form .form-input-container textarea {
   background-color: unset;
-  border: none;
   border: #f2f4f3 solid 2px;
   outline: none;
   font-family: basic-sans, sans-serif;
@@ -388,6 +416,23 @@ html {
 }
 #form-container #form-formulaire-container form .form-input-container:has(input:focus) label, #form-container #form-formulaire-container form .form-input-container:has(textarea:focus) label {
   opacity: 1;
+}
+#form-container #form-button-submit {
+  all: unset;
+  margin-top: 20px;
+  border: #f2f4f3 solid 2px;
+  padding: 10px 20px;
+  font-family: basic-sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  transition: transform 300ms ease-out, background-color 300ms ease-out, color 300ms ease-out, opacity 300ms ease-out;
+  cursor: pointer;
+}
+#form-container #form-button-submit:hover {
+  transform: scale(0.95);
+  color: #1d1d1d;
+  background-color: #f2f4f3;
+  font-weight: 600;
 }
 #form-container #form-bg {
   height: 150%;
@@ -415,4 +460,31 @@ html {
   transition: height 0ms ease 2000ms, width 2000ms ease-in-out;
   height: 10px;
   width: 20px;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateX(0px);
+  }
+  15% {
+    transform: translateX(-10px);
+  }
+  30% {
+    transform: translateX(10px);
+  }
+  45% {
+    transform: translateX(-5px);
+  }
+  60% {
+    transform: translateX(5px);
+  }
+  75% {
+    transform: translateX(-1px);
+  }
+  90% {
+    transform: translate(1px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
 }/*# sourceMappingURL=style.css.map */
