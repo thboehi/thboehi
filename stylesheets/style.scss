@@ -352,6 +352,27 @@ html{
             margin-top: 20px;
             display: flex;
             flex-direction: column;
+            max-width: 250px;
+            overflow: hidden;
+            height: auto;
+            transition: height 300ms ease-out;
+            &[data-state="hidden"]{
+                height: 0px;
+            }
+            #form-error-message{
+                background-color: rgba(255, 0, 0, 0.4);
+                padding: 0;
+                border-radius: 5px;
+                font-size: 0.7rem;
+                height: 0;
+                box-sizing: border-box;
+                overflow: hidden;
+                transition: height 300ms ease-out, padding 300ms ease-out;
+                &[data-state="visible"]{
+                    height: auto;
+                    padding: 10px;
+                }
+            }
             .form-input-container{
                 display: flex;
                 flex-direction: column;
@@ -388,7 +409,7 @@ html{
                     padding: 5px;
                     border-radius: 0;
                     &[data-missing="true"]{
-                        background-color: rgba(255, 0, 0, 0.3);
+                        background-color: rgba(255, 0, 0, 0.4);
                     }
                 }
                 input:focus, textarea:focus{
@@ -405,6 +426,7 @@ html{
                     padding: 5px;
                     transition: background-color 300ms ease-in-out;
                     border-radius: 0;
+                    height: 100px;
                 }
                 label{
                     opacity: 0.5;

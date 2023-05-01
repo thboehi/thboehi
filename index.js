@@ -151,9 +151,9 @@ function sendForm(){
         document.getElementById("email").setAttribute("data-missing", "true")
     }
     if (emailCorrect && phoneCorrect && emailCorrect){
-        alert("BRAVO")
+        document.getElementById("form-error-message").setAttribute("data-state", "hidden")
     } else {
-        alert("Shit happens")
+        document.getElementById("form-error-message").setAttribute("data-state", "visible")
     }
 }
 window.addEventListener("scroll", event => {
