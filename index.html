@@ -26,7 +26,7 @@
     <body onload="toTop()">
         <!-- ENTRY PAGE -->
         <!-- BE CAREFUL, MUST BE ON VISIBLE BY DEFAULT, HIDDEN FOR DEBUG -->
-        <div id="entry-container" data-state="hidden">
+        <div id="entry-container" data-state="visible">
             <div id="entry-text-container">
                 <h1>WAXIE</h1>
                 <p>.webdev</p>
@@ -41,9 +41,11 @@
             <div id="main-banner"></div>
             <div id="main-banner-gradient"></div>
             <div id="main-profile-container">
-                <img id="profile-pic" src="./images/noir.png" alt="Thomas" draggable="false">
-                <p id="profile-name">Thoma Boehi</p>
-                <h2 id="profile-username">WAXIE</h2>
+                <div id="main-name-username">
+                    <img id="profile-pic" src="./images/noir.png" alt="Thomas" draggable="false">
+                    <p id="profile-name">Thoma Boehi</p>
+                    <h2 id="profile-username">WAXIE</h2>
+                </div>
                 <div id="main-profile-socials-container">
                     <a href="https://linkedin.com/in/thboehi" target="_blank"><img src="./images/socials/linkedin.svg" alt="LinkedIn link"></a>
                     <a href="https://github.com/thboehi" target="_blank"><img src="./images/socials/github.svg" alt="Github link"></a>
@@ -53,7 +55,7 @@
                 <button id="contact-button" onclick="openForm()">Contacter</button>
             </div>
             <div id="main-project-container">
-                <h3 id="main-project-title">Projects</h3>
+                <h3 id="main-project-title">Projets</h3>
                 <div id="project-container">
                     <button id="button-previous" onclick="previousProject()">‹</button>
                     <div class="image-container" onclick="window.open(`https://thboehi.github.io/The-Fork/`);">
@@ -70,7 +72,7 @@
 
         <!-- FORMULAIRE PAGE -->
         <!-- BE CAREFUL, MUST BE ON HIDDEN BY DEFAULT, VISIBLE FOR DEBUG -->
-        <div id="form-container" data-state="visible">
+        <div id="form-container" data-state="hidden">
             <div id="form-back-container" onclick="closeForm()">
                 <img src="./images/back.svg" alt="Go back" draggable="false">
             </div>
@@ -105,7 +107,7 @@
                     </div>
                     <div class="form-input-container">
                         <label for="message">Message</label>
-                        <textarea name="message" id="message" cols="30" rows="10" data-missing="false"></textarea>
+                        <textarea name="message" id="message" onblur="checkInput('message')" cols="30" rows="10" data-missing="false"></textarea>
                     </div>
                 </form>
                 <button id="form-button-submit" onclick="sendForm()">Envoyer</button>
