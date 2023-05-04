@@ -50,12 +50,9 @@ const toTop = () => {
 const enterWebsite = () => {
     enterContainer.setAttribute("data-state", "hidden")
     enterWebsiteButton.setAttribute("data-state", "hidden")
-    htmlDoc.setAttribute("style", "overflow: none; overflow-x: hidden;")
-    document.querySelector('body').setAttribute("style", "overflow: none; overflow-x: hidden;")
-    document.querySelector('body').setAttribute("style", "overflow: none; overflow-x: hidden;")
-    setTimeout(() => {
-        document.querySelector('meta[name="theme-color"]').setAttribute("content", "#000")
-    }, 1500);
+    setTimeout(function() {
+        htmlDoc.setAttribute("style", "overflow: none; overflow-x: hidden;")
+    }, 2200);
 }
 
 window.addEventListener('keypress', (event) =>{
@@ -130,27 +127,16 @@ const pauseAuto = () => {
 
 const openForm = () => {
     if(closingForm){return}
-    document.getElementById("form-container").removeAttribute("style")
-    setTimeout(() => {
-        document.getElementById("form-container").setAttribute("data-state", "visible")
-        window.scrollTo(0, 0)
-        // htmlDoc.setAttribute("style", "overflow: hidden; overflow-x: hidden;")
-        setTimeout(() => {
-            document.getElementById("form-container").setAttribute("style", "overflow: hidden;")
-            htmlDoc.setAttribute("style", "background-color: #29335c;")
-            document.querySelector('meta[name="theme-color"]').setAttribute("content", "#29335c")
-        }, 2200);
-    }, 200);
+    document.getElementById("form-container").setAttribute("data-state", "visible")
+    window.scrollTo(0, 0)
+    htmlDoc.setAttribute("style", "overflow: hidden; overflow-x: hidden;")
 }
 
 const closeForm = () => {
     closingForm = true
-    htmlDoc.removeAttribute("style")
     document.getElementById("form-container").setAttribute("data-state", "hidden")
-    document.getElementById("form-container").setAttribute("style", "overflow: unset;")
-    document.querySelector('meta[name="theme-color"]').setAttribute("content", "#000")
     setTimeout(function() {
-        document.getElementById("form-container").setAttribute("style", "display: none;")
+        htmlDoc.setAttribute("style", "overflow: unset; overflow-x: hidden;")
         closingForm = false
     }, 2200);
 }
@@ -235,11 +221,7 @@ const sendForm = () => {
 }
 
 window.addEventListener("scroll", event => {
-    // console.log("TOP: " + htmlDoc.scrollTop)
-    // console.log("LEFT: " + htmlDoc.scrollLeft)
-    if (htmlDoc.scrollLeft !== 0){
-        htmlDoc.scrollLeft = 0
-    }
+    console.log(htmlDoc.scrollTop)
 } )
 
 if (goToPosition === "form"){

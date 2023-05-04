@@ -18,11 +18,6 @@ html {
   background-color: #1d1d1d;
 }
 
-@media screen and (max-width: 768px) {
-  #main-container #main-project-container {
-    width: calc(100vw - 20px);
-  }
-}
 #entry-container {
   height: 100vh;
   width: 100vw;
@@ -102,7 +97,6 @@ html {
 #main-container {
   width: 100%;
   min-height: 100vh;
-  background-color: #1d1d1d;
   position: absolute;
   top: 0;
   left: 0;
@@ -111,6 +105,7 @@ html {
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
+  overflow: hidden;
 }
 #main-container #main-banner {
   position: absolute;
@@ -479,7 +474,7 @@ html {
   font-weight: 600;
 }
 #form-container #form-bg {
-  height: 200%;
+  height: 150%;
   width: 150%;
   background-color: #29335c;
   border-radius: 50%;
@@ -489,23 +484,31 @@ html {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: -1;
-  transition: width 2000ms ease-in-out, height 0ms ease;
+  transition: height 2000ms ease-out;
 }
 #form-container[data-state=hidden] {
-  transform: translateX(100%);
+  transform: translateY(100%);
 }
 #form-container[data-state=hidden] #form-back-container img {
   opacity: 0;
 }
 #form-container[data-state=hidden] #form-formulaire-container {
-  transform: translateX(100%);
+  transform: translateY(100%);
 }
 #form-container[data-state=hidden] #form-bg {
-  transition: height 0ms ease 2000ms, width 2000ms ease-in-out;
-  height: 10px;
-  width: 20px;
+  height: 1px;
+  width: 150%;
 }
 
+@media screen and (max-width: 768px) {
+  #main-container #main-project-container {
+    width: calc(100vw - 20px);
+  }
+  #form-container #form-back-container {
+    width: 45px;
+    height: 45px;
+  }
+}
 @keyframes bounce {
   0% {
     transform: translateX(0px);

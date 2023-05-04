@@ -1,6 +1,8 @@
 $dark: #1d1d1d;
 $light: #f2f4f3;
 $lighttransparent: #f2f4f34b;
+$red: #ff595e;
+$blue: #29335c;
 
 *{
     margin: 0;
@@ -21,14 +23,6 @@ html{
     background-color: $dark;
 }
 
-@media screen and (max-width: 768px){
-    #main-container{
-        #main-project-container{
-            width: calc(100vw - 20px);
-        }
-    }
-}
-
 #entry-container{
     height: 100vh;
     width: 100vw;
@@ -36,7 +30,6 @@ html{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    // background-color: blueviolet;
     transition: transform 2000ms ease-in-out 300ms;
     z-index: 4;
     position: absolute;
@@ -88,7 +81,7 @@ html{
         height: 150%;
         width: 150%;
         // background-color: #cdc5b4;
-        background-color: #ff595e;
+        background-color: $red;
         // background-color: #607b7d;
         // background-color: #d8dbe2;
         border-radius: 50%;
@@ -98,7 +91,7 @@ html{
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: -1;
-        transition: height 2000ms ease-in-out,;
+        transition: height 2000ms ease-in-out;
     }
     &[data-state="hidden"]{
         transform: translateY(-100%);
@@ -114,7 +107,6 @@ html{
 #main-container{
     width: 100%;
     min-height: 100vh;
-    background-color: $dark;
     position: absolute;
     top: 0;
     left: 0;
@@ -123,6 +115,7 @@ html{
     align-items: center;
     justify-content: flex-start;
     flex-direction: column;
+    overflow: hidden;
     #main-banner{
         position: absolute;
         top: 0; left: 0;
@@ -480,9 +473,9 @@ html{
         }
     }
     #form-bg{
-        height: 200%;
+        height: 150%;
         width: 150%;
-        background-color: #29335c;
+        background-color: $blue;
         border-radius: 50%;
         display: inline-block;
         position: absolute;
@@ -490,25 +483,41 @@ html{
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: -1;
-        transition: width 2000ms ease-in-out, height 0ms ease;
+        transition: height 2000ms ease-out;
     }
     &[data-state="hidden"]{
-        transform: translateX(100%);
+        transform: translateY(100%);
         #form-back-container{
             img{
                 opacity: 0;
             }
         }
         #form-formulaire-container{
-            transform: translateX(100%);
+            transform: translateY(100%);
         }
         
         #form-bg{
-            transition: height 0ms ease 2000ms, width 2000ms ease-in-out;
-            height: 10px;
-            width: 20px;
+            height: 1px;
+            width: 150%;
         }
         
+    }
+}
+
+@media screen and (max-width: 768px){
+    #main-container{
+        #main-project-container{
+            width: calc(100vw - 20px);
+        }
+    }
+    #form-container{
+        #form-back-container{
+            width: 45px;
+            height: 45px;
+        }
+        #form-formulaire-container{
+
+        }
     }
 }
 
