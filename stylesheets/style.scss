@@ -206,6 +206,35 @@ html{
     #main-project-container{
         margin-top: 100px;
         margin-bottom: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        #play-pause-button{
+            font-family: basic-sans, sans-serif;
+            font-weight: 400;
+            margin-top: 20px;
+            opacity: 0.1;
+            cursor: pointer;
+            letter-spacing: normal;
+            user-select: none;
+            padding: 5px 20px;
+            width: auto;
+            letter-spacing: 2px;
+            text-decoration: underline transparent 2px;
+            text-underline-offset: -3px;
+            transition: transform 300ms ease-in-out, opacity 300ms ease-in-out, letter-spacing 300ms ease-in-out, border-bottom 300ms ease-in-out, text-decoration 300ms ease-in-out, text-underline-offset 300ms ease-in-out;
+            &:hover{
+                opacity: 1;
+                text-decoration: underline white 2px;
+                text-underline-offset: 3px;
+            }
+            &:active{
+                transition: transform 10ms ease-in-out;
+                transform: scale(0.9);
+                opacity: 0.6;
+            }
+        }
         #main-project-title{
             font-family: basic-sans, sans-serif;
             font-weight: 400;
@@ -213,18 +242,6 @@ html{
             text-align: center;
             margin-bottom: 10px;
             position: relative;
-            /*&:hover{
-                &::after{
-                    content: "||";
-                    position: absolute;
-                    top: 0; left: 50%;
-                    transform: translateX(-50%) translateY(-30px);
-                    font-size: 0.7rem;
-                    background: $lighttransparent;
-                    padding: 5px;
-                    border-radius: 5px;
-                }
-            }*/
         }
         #project-container{
             button{
@@ -483,10 +500,10 @@ html{
         left: 50%;
         transform: translate(-50%, -50%);
         z-index: -1;
-        transition: height 2000ms ease-out;
+        transition: height 2000ms ease-out 500ms;
     }
     &[data-state="hidden"]{
-        transform: translateY(100%);
+        transform: translateY(150%);
         #form-back-container{
             img{
                 opacity: 0;
@@ -514,9 +531,6 @@ html{
         #form-back-container{
             width: 45px;
             height: 45px;
-        }
-        #form-formulaire-container{
-
         }
     }
 }

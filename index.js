@@ -43,7 +43,6 @@ const goToPosition = urlParams.get('position')
 const toTop = () => {
     setTimeout(function() {
         window.scrollTo(0, 0)
-        console.log("Scrolled to top")
     }, 500)
 }
 
@@ -79,11 +78,9 @@ const nextProject = () => {
 
 const autoNextProject = () => {
     if (onPause){
-        console.log("Abort mission! On pause.");
         return
     }
     if (((Math.floor(new Date().getTime() / 1000)) - lastClick) < 5){
-        console.log("Abort mission! Clicked not long ago.");
         return
     }
     document.querySelector(".image-container").style.animation = "opacityMaxMinMax 1s ease-out"
@@ -123,8 +120,10 @@ const previousProject = () => {
 const pauseAuto = () => {
     if (onPause) {
         onPause = false
+        document.getElementById("play-pause-button").innerHTML = "PAUSE"
     } else {
         onPause = true
+        document.getElementById("play-pause-button").innerHTML = "REPRENDRE"
     }
 }
 
@@ -162,7 +161,7 @@ const checkInput = (type) => {
                 toTop()
             }, 10);
             if (regexNameSurname.test(document.getElementById(type).value)){
-                console.log("ça passe")
+
                 document.getElementById(`${type}-ok`).setAttribute("data-state", "visible")
                 document.getElementById(`${type}-wrong`).setAttribute("data-state", "hidden")
                 document.getElementById(type).setAttribute("data-missing", "false")
@@ -175,7 +174,6 @@ const checkInput = (type) => {
             break;
         case "phone":
             if (regexPhone.test(document.getElementById(type).value)){
-                console.log("ça passe")
                 document.getElementById(`${type}-ok`).setAttribute("data-state", "visible")
                 document.getElementById(`${type}-wrong`).setAttribute("data-state", "hidden")
                 document.getElementById(type).setAttribute("data-missing", "false")
@@ -188,7 +186,6 @@ const checkInput = (type) => {
             break;
         case "email":
             if (regexEmail.test(document.getElementById(type).value)){
-                console.log("ça passe")
                 document.getElementById(`${type}-ok`).setAttribute("data-state", "visible")
                 document.getElementById(`${type}-wrong`).setAttribute("data-state", "hidden")
                 document.getElementById(type).setAttribute("data-missing", "false")
@@ -235,8 +232,6 @@ const sendForm = () => {
 }
 
 window.addEventListener("scroll", event => {
-    // console.log("TOP: " + htmlDoc.scrollTop)
-    // console.log("LEFT: " + htmlDoc.scrollLeft)
     if (htmlDoc.scrollLeft !== 0){
         htmlDoc.scrollLeft = 0
     }
