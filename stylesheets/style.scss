@@ -230,8 +230,7 @@ html{
                 text-underline-offset: 3px;
             }
             &:active{
-                transition: transform 10ms ease-in-out;
-                transform: scale(0.9);
+                transition: opacity 10ms ease-in-out;
                 opacity: 0.6;
             }
         }
@@ -287,19 +286,22 @@ html{
                     opacity: 0;
                     transition: opacity 300ms ease-in-out;
                 }
-                h3, p{
+                .project-title, .project-description{
                     position: absolute;
                     transform: translate(-50%, -50%);
                     opacity: 0;
                     transition: top 300ms ease-in-out, opacity 300ms ease-in-out;
+                    user-select: none;
+                    width: calc(100% - 60px);
                 }
-                h3{
+                .project-title{
                     top: 30%; left: 50%;
                     font-family: 'Rhastelie', sans-serif;
                     font-weight: 400;
                     font-size: 2rem;
+                    text-align: center;
                 }
-                p{
+                .project-description{
                     top: 70%; left: 50%;
                     font-family: basic-sans, sans-serif;
                     font-weight: 400;
@@ -316,14 +318,14 @@ html{
                     .image-colorizer{
                         opacity: 0.75;
                     }
-                    h3, p{
+                    .project-title, .project-description{
                         transition: top 300ms ease-in-out 300ms, opacity 300ms ease-in-out 300ms;
                     }
-                    h3{
+                    .project-title{
                         top: 40%; left: 50%;
                         opacity: 1;
                     }
-                    p{
+                    .project-description{
                         top: 60%; left: 50%;
                         opacity: 1;
                     }
@@ -397,10 +399,24 @@ html{
                 height: 0;
                 box-sizing: border-box;
                 overflow: hidden;
-                transition: height 300ms ease-out, padding 300ms ease-out;
+                // transition: height 300ms ease-out, padding 300ms ease-out;
                 &[data-state="visible"]{
                     height: auto;
                     padding: 10px;
+                }
+            }
+            #form-info-message{
+                background-color: $lighttransparent;
+                padding: 10px;
+                border-radius: 5px;
+                font-size: 0.7rem;
+                height: auto;
+                box-sizing: border-box;
+                overflow: hidden;
+                // transition: height 300ms ease-out, padding 300ms ease-out;
+                &[data-state="hidden"]{
+                    height: 0;
+                    padding: 0;
                 }
             }
             .form-input-container{
@@ -503,7 +519,7 @@ html{
         transition: height 2000ms ease-out 500ms;
     }
     &[data-state="hidden"]{
-        transform: translateY(150%);
+        transform: translateY(100%);
         #form-back-container{
             img{
                 opacity: 0;
@@ -525,6 +541,46 @@ html{
     #main-container{
         #main-project-container{
             width: calc(100vw - 20px);
+            #project-container{
+                margin: 20px;
+                .image-container{
+                    width: calc(100vw - 120px);
+                    border: $light solid 2px;
+                    .project-image{
+                        width: calc(100vw - 120px);
+                        filter: blur(4px);
+                    }
+                    .image-colorizer{
+                        width: calc(100vw - 120px);
+                        opacity: 0.75;
+                    }
+                    .project-title{
+                        opacity: 1;
+                        font-size: 7vw;
+                        text-align: center;
+            
+                    }
+                    .project-description{
+                        opacity: 1;
+                        font-size: 4vw;
+                    }
+                    &:hover{
+                        transform: scale(1);
+                        .project-title, .project-description{
+                            transition: top 300ms ease-in-out 300ms, opacity 300ms ease-in-out 300ms;
+                        }
+                        .project-title{
+                            top: 30%; left: 50%;
+                            opacity: 1;
+                        }
+                        .project-description{
+                            top: 70%; left: 50%;
+                            opacity: 1;
+                        }
+                    }
+                }
+                
+            }
         }
     }
     #form-container{

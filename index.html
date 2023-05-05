@@ -26,7 +26,7 @@
     <body onload="toTop()">
         <!-- ENTRY PAGE -->
         <!-- BE CAREFUL, MUST BE ON VISIBLE BY DEFAULT, HIDDEN FOR DEBUG -->
-        <div id="entry-container" data-state="visible">
+        <div id="entry-container" data-state="visible" style="overflow: hidden;">
             <div id="entry-text-container">
                 <h1>WAXIE</h1>
                 <p>.webdev</p>
@@ -82,6 +82,7 @@
                 <p>de contact</p>
                 <form action="#" data-state="visible">
                     <p id="form-error-message" data-state="hidden">Merci de remplir tous les champs obligatoires avant d'envoyer le formulaire.</p>
+                    <p id="form-info-message" data-state="visible">Les champs accompagnés d'un astérix sont obligatoires.</p>
                     <div class="form-input-container">
                         <img src="./images/wrong.svg" alt="Wrong" data-state="hidden" id="name-wrong" class="input-wrong">
                         <img src="./images/ok.svg" alt="Ok" data-state="hidden" id="name-ok" class="input-ok">

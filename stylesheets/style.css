@@ -231,8 +231,7 @@ html {
   text-underline-offset: 3px;
 }
 #main-container #main-project-container #play-pause-button:active {
-  transition: transform 10ms ease-in-out;
-  transform: scale(0.9);
+  transition: opacity 10ms ease-in-out;
   opacity: 0.6;
 }
 #main-container #main-project-container #main-project-title {
@@ -291,20 +290,25 @@ html {
   opacity: 0;
   transition: opacity 300ms ease-in-out;
 }
-#main-container #main-project-container #project-container .image-container h3, #main-container #main-project-container #project-container .image-container p {
+#main-container #main-project-container #project-container .image-container .project-title, #main-container #main-project-container #project-container .image-container .project-description {
   position: absolute;
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: top 300ms ease-in-out, opacity 300ms ease-in-out;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  width: calc(100% - 60px);
 }
-#main-container #main-project-container #project-container .image-container h3 {
+#main-container #main-project-container #project-container .image-container .project-title {
   top: 30%;
   left: 50%;
   font-family: "Rhastelie", sans-serif;
   font-weight: 400;
   font-size: 2rem;
+  text-align: center;
 }
-#main-container #main-project-container #project-container .image-container p {
+#main-container #main-project-container #project-container .image-container .project-description {
   top: 70%;
   left: 50%;
   font-family: basic-sans, sans-serif;
@@ -323,15 +327,15 @@ html {
 #main-container #main-project-container #project-container .image-container:hover .image-colorizer {
   opacity: 0.75;
 }
-#main-container #main-project-container #project-container .image-container:hover h3, #main-container #main-project-container #project-container .image-container:hover p {
+#main-container #main-project-container #project-container .image-container:hover .project-title, #main-container #main-project-container #project-container .image-container:hover .project-description {
   transition: top 300ms ease-in-out 300ms, opacity 300ms ease-in-out 300ms;
 }
-#main-container #main-project-container #project-container .image-container:hover h3 {
+#main-container #main-project-container #project-container .image-container:hover .project-title {
   top: 40%;
   left: 50%;
   opacity: 1;
 }
-#main-container #main-project-container #project-container .image-container:hover p {
+#main-container #main-project-container #project-container .image-container:hover .project-description {
   top: 60%;
   left: 50%;
   opacity: 1;
@@ -404,11 +408,23 @@ html {
   height: 0;
   box-sizing: border-box;
   overflow: hidden;
-  transition: height 300ms ease-out, padding 300ms ease-out;
 }
 #form-container #form-formulaire-container form #form-error-message[data-state=visible] {
   height: auto;
   padding: 10px;
+}
+#form-container #form-formulaire-container form #form-info-message {
+  background-color: rgba(242, 244, 243, 0.2941176471);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  height: auto;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+#form-container #form-formulaire-container form #form-info-message[data-state=hidden] {
+  height: 0;
+  padding: 0;
 }
 #form-container #form-formulaire-container form .form-input-container {
   display: flex;
@@ -510,7 +526,7 @@ html {
   transition: height 2000ms ease-out 500ms;
 }
 #form-container[data-state=hidden] {
-  transform: translateY(150%);
+  transform: translateY(100%);
 }
 #form-container[data-state=hidden] #form-back-container img {
   opacity: 0;
@@ -526,6 +542,46 @@ html {
 @media screen and (max-width: 768px) {
   #main-container #main-project-container {
     width: calc(100vw - 20px);
+  }
+  #main-container #main-project-container #project-container {
+    margin: 20px;
+  }
+  #main-container #main-project-container #project-container .image-container {
+    width: calc(100vw - 120px);
+    border: #f2f4f3 solid 2px;
+  }
+  #main-container #main-project-container #project-container .image-container .project-image {
+    width: calc(100vw - 120px);
+    filter: blur(4px);
+  }
+  #main-container #main-project-container #project-container .image-container .image-colorizer {
+    width: calc(100vw - 120px);
+    opacity: 0.75;
+  }
+  #main-container #main-project-container #project-container .image-container .project-title {
+    opacity: 1;
+    font-size: 7vw;
+    text-align: center;
+  }
+  #main-container #main-project-container #project-container .image-container .project-description {
+    opacity: 1;
+    font-size: 4vw;
+  }
+  #main-container #main-project-container #project-container .image-container:hover {
+    transform: scale(1);
+  }
+  #main-container #main-project-container #project-container .image-container:hover .project-title, #main-container #main-project-container #project-container .image-container:hover .project-description {
+    transition: top 300ms ease-in-out 300ms, opacity 300ms ease-in-out 300ms;
+  }
+  #main-container #main-project-container #project-container .image-container:hover .project-title {
+    top: 30%;
+    left: 50%;
+    opacity: 1;
+  }
+  #main-container #main-project-container #project-container .image-container:hover .project-description {
+    top: 70%;
+    left: 50%;
+    opacity: 1;
   }
   #form-container #form-back-container {
     width: 45px;
