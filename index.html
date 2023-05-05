@@ -9,7 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Thomas Boehi | WAXIE</title>
         <meta name="description" content="Portfolio de Thomas Boehi, ou WAXIE. Étudiant suisse en technologie web.">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=yes">
         <link rel="stylesheet" href="./stylesheets/style.css">
         <!-- <link rel="icon" type="image/x-icon" href="/images/"> -->
         <link href="https://fonts.cdnfonts.com/css/rhastelie" rel="stylesheet">
@@ -80,9 +80,10 @@
             <div id="form-formulaire-container">
                 <h1>Formulaire</h1>
                 <p>de contact</p>
-                <form action="#" data-state="visible">
-                    <p id="form-error-message" data-state="hidden">Merci de remplir tous les champs obligatoires avant d'envoyer le formulaire.</p>
-                    <p id="form-info-message" data-state="visible">Les champs accompagnés d'un astérix sont obligatoires.</p>
+                <p id="form-error-message" data-state="hidden">Merci de remplir tous les champs obligatoires avant d'envoyer le formulaire.</p>
+                <p id="form-info-message" data-state="visible">Les champs accompagnés d'un astérix sont obligatoires.</p>
+                <p id="form-confirm-message" data-state="hidden">Merci! Le formulaire a bien été envoyé. Vous avez reçu une copie. (Faux)</p>
+                <form id="form" action="#" data-state="visible">
                     <div class="form-input-container">
                         <img src="./images/wrong.svg" alt="Wrong" data-state="hidden" id="name-wrong" class="input-wrong">
                         <img src="./images/ok.svg" alt="Ok" data-state="hidden" id="name-ok" class="input-ok">

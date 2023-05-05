@@ -367,6 +367,19 @@ const sendForm = () => {
     if (emailCorrect && phoneCorrect && emailCorrect){
         //Hide the error message
         document.getElementById("form-error-message").setAttribute("data-state", "hidden")
+        //Hide the info message
+        document.getElementById("form-info-message").setAttribute("data-state", "hidden")
+        //Show the confirmation message
+        document.getElementById("form-confirm-message").setAttribute("data-state", "visible")
+        //Hide the form container
+        document.getElementById("form").setAttribute("data-state", "hidden")
+        //Hide the send button
+        document.getElementById("form-button-submit").setAttribute("data-state", "hidden")
+        //After 1 second, send to top
+        setTimeout(function() {
+            //Set the position of the user to Top0 and Left0
+            window.scrollTo(0, 0)
+        }, 1000)
     } else { //If one or more is false
         //Show the error message
         document.getElementById("form-error-message").setAttribute("data-state", "visible")
