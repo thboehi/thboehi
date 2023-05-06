@@ -344,13 +344,13 @@ html{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    transition: transform 2000ms ease-in-out 300ms;
+    transition: transform 2000ms ease-in-out;
     z-index: 6;
     position: absolute;
     top: 0;
     left: 0;
     #form-back-container{
-        position: absolute;
+        position: fixed;
         top: 20px; right: 20px;
         z-index: 10;
         width: 45px;
@@ -418,7 +418,7 @@ html{
             max-width: 250px;
             width: 100%;
             overflow: hidden;
-            height: 424px;
+            height: 430px;
             transition: height 1000ms ease-out;
             &[data-state="hidden"]{
                 height: 0px;

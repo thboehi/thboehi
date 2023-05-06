@@ -10,6 +10,8 @@ let htmlDoc = document.querySelector("html")
 let projectsList, projectMax
 //Variable to let know if project player is on pause or not
 let onPause = false
+//Variable to let know if the user is hover the player
+let isWatching = false
 //Variable that save
 let lastClick
 let currentProject = 1
@@ -108,8 +110,8 @@ const nextProject = () => {
 
 //Function to change the project to the next one
 const autoNextProject = () => {
-    //Check if the auto is on pause
-    if (onPause){
+    //Check if the auto is on pause or if the user is watching the current project
+    if (onPause || isWatching){
         //If yes, stop the function
         return
     }

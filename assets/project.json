@@ -1,23 +1,26 @@
 [
     {
-        "id": "0",
         "title": "The Fork",
         "description": "A website for a fictional restaurant on the shores of Lake Geneva in Switzerland.",
         "link": "https://thboehi.github.io/The-Fork/",
         "img": "./images/projects/thefork.png"
     },
     {
-        "id": "1",
         "title": "Neptunia",
         "description": "A simple onepage made by a group of students in less than 8 hours.",
         "link": "https://thboehi.github.io/neptunia/",
         "img": "./images/projects/neptunia.png"
     },
     {
-        "id": "2",
         "title": "iOS 6",
         "description": "A mini web-app to imitate the calculator that was on iOS 6.",
         "link": "https://thboehi.github.io/ios6-calculator/",
         "img": "./images/projects/iossix.png"
+    },
+    {
+        "title": "Newsletter",
+        "description": "An advanced submit button that react to the content and the other elements.",
+        "link": "https://codepen.io/thoma-boehi/pen/ZEqvPBx",
+        "img": "./images/projects/newsletter.png"
     }
 ]
