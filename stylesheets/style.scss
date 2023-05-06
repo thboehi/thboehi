@@ -79,7 +79,7 @@ html{
     }
     #entry-bg{
         height: 150%;
-        width: 150%;
+        width: 250%;
         // background-color: #cdc5b4;
         background-color: $red;
         // background-color: #607b7d;
@@ -351,10 +351,12 @@ html{
     left: 0;
     #form-back-container{
         position: absolute;
-        top: 20px; left: 20px;
+        top: 20px; right: 20px;
         z-index: 10;
-        width: 75px;
-        height: 75px;
+        width: 45px;
+        height: 45px;
+        opacity: 1;
+        transition: opacity 300ms ease-in-out 2500ms;
         img{
             cursor: pointer;
             opacity: 0.5;
@@ -517,7 +519,7 @@ html{
     }
     #form-bg{
         height: 150%;
-        width: 150%;
+        width: 250%;
         background-color: $blue;
         border-radius: 50%;
         display: inline-block;
@@ -531,6 +533,8 @@ html{
     &[data-state="hidden"]{
         transform: translateY(80%);
         #form-back-container{
+            transition: opacity 300ms ease-in-out;
+            opacity: 0;
             img{
                 opacity: 0;
             }
@@ -541,7 +545,7 @@ html{
         
         #form-bg{
             height: 0px;
-            width: 150%;
+            width: 250%;
         }
         
     }
@@ -599,6 +603,7 @@ html{
         }
     }
     #form-container{
+        padding-top: 30px;
         #form-back-container{
             width: 45px;
             height: 45px;
