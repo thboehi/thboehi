@@ -237,7 +237,7 @@ html{
         }
         #main-project-title{
             font-family: basic-sans, sans-serif;
-            font-weight: 400;
+            font-weight: 700;
             font-size: 1.5rem;
             text-align: center;
             margin-bottom: 10px;
@@ -350,6 +350,90 @@ html{
 
             }
         }
+    }
+    /* This part is a S3CR3T part ;) */
+    #main-scrt-container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        font-family: basic-sans, sans-serif;
+        text-align: center;
+        margin: 10px 0px 300px 0px;
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity 1000ms ease-in-out;
+        &[data-state="visible"]{
+            opacity: 1;
+        }
+        #scrt-title{
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 20px;
+        }
+        .scrt-description{
+            font-size: 1rem;
+            font-weight: 400;
+            max-width: 500px;
+            opacity: 0.9;
+        }
+        #scrt-cover-container{
+            margin: 20px 0px;
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 300ms ease-in-out, border 300ms ease-in-out;
+            border: transparent 3px solid;
+            width: 400px;
+            height: 400px;
+            #scrt-album-cover{
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+
+            }
+            #scrt-playpause{
+                position: absolute;
+                top: 50%; left: 50%;
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0;
+                width: 55px;
+                height: 55px;
+                transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+            }
+            &:hover{
+                transform: scale(0.95);
+                border: $light 3px solid;
+                #scrt-album-cover{
+                    opacity: 0.9;
+                }
+                #scrt-playpause{
+                    transform: translate(-50%, -50%) scale(1.1);
+                    opacity: 1;
+                    &:hover{
+                        transform: translate(-50%, -50%) scale(1.2);
+                    }
+                }
+            }
+        }
+        .scrt-spotify{
+            margin: 20px;
+            width: 40px;
+            height: 40px;
+            fill: $light;
+            cursor: pointer;
+            transform: scale(1);
+            transition: transform 300ms ease-in-out, fill 300ms ease-in-out;
+            path{
+                fill: inherit;
+            }
+            &:hover{
+                fill: #1ED760;
+                transform: scale(0.95);
+            }
+        }
+
     }
 }
 
@@ -621,6 +705,32 @@ html{
                     }
                 }
                 
+            }
+        }
+        #main-scrt-container{
+            padding: 20px;
+            #scrt-cover-container{
+                width: calc(100vw - 120px);
+                height: calc(100vw - 120px);
+                border: $light 3px solid;
+                #scrt-album-cover{
+                    width: 100%;
+                    height: 100%;
+                }
+                #scrt-playpause{
+                    opacity: 1;
+                }
+                &:hover{
+                    transform: scale(1);
+                    #scrt-album-cover{
+                        opacity: 0.9;
+                    }
+                    #scrt-playpause{
+                        &:hover{
+                            transform: translate(-50%, -50%) scale(1.1);
+                        }
+                    }
+                }
             }
         }
     }

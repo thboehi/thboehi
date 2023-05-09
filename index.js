@@ -420,7 +420,7 @@ if (goToPosition === "form"){
 }
 
 //This is a keydown event listener for multiple reason
-window.addEventListener('keydown', (event) =>{
+document.addEventListener('keydown', (event) =>{
     switch (event.key) {
         //If the key is Enter
         case "Enter":
@@ -445,3 +445,42 @@ window.addEventListener('keydown', (event) =>{
             break;
     }
 })
+
+
+
+//Keep the K0n@mi c0de in a variable
+const c0deK0n = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+// Lancez la musique ici
+let audio = new Audio('./assets/nucleaire.mp3');
+
+//Array where to save the keys the user pressed
+let pressedKey = [];
+
+//Event listener when a key is pressed
+document.addEventListener('keydown', function(event) {
+  //Add the pressed key to the array list
+  pressedKey.push(event.key);
+  
+  // Vérifiez si le tableau contient le code Konami complet
+  if (pressedKey.toString().indexOf(c0deK0n) >= 0) {
+    // audio.loop = false;
+    // audio.play();
+    document.getElementById("main-scrt-container").removeAttribute("style")
+    setTimeout(() => {
+        document.getElementById("main-scrt-container").setAttribute("data-state", "visible")
+    }, 100);
+    // Remettez le tableau à zéro pour permettre une autre entrée du code
+    pressedKey = [];
+  }
+});
+
+const playOrPause = () => {
+    if (audio.paused) {
+        audio.play()
+        document.getElementById("scrt-playpause").setAttribute("src", "./images/scrt/pause.svg")
+    } else {
+        audio.pause()
+        document.getElementById("scrt-playpause").setAttribute("src", "./images/scrt/play.svg")
+    }
+}
