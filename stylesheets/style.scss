@@ -287,6 +287,18 @@ html{
                     opacity: 0;
                     transition: opacity 300ms ease-in-out;
                 }
+                .project-number{
+                    position: absolute;
+                    opacity: 1;
+                    user-select: none;
+                    top: 5px; right: 5px;
+                    font-family: basic-sans, sans-serif;
+                    font-weight: 400;
+                    font-style: normal;
+                    opacity: 0.3;
+                    transition: opacity 300ms ease-in-out;
+                    mix-blend-mode: difference;
+                }
                 .project-title, .project-description{
                     position: absolute;
                     transform: translate(-50%, -50%);
@@ -318,6 +330,11 @@ html{
                     }
                     .image-colorizer{
                         opacity: 0.75;
+                    }
+                    .project-number{
+                        opacity: 1;
+                        mix-blend-mode: normal;
+                        transition: opacity 300ms ease-in-out 300ms, mix-blend-mode 300ms ease;
                     }
                     .project-title, .project-description{
                         transition: top 300ms ease-in-out 300ms, opacity 300ms ease-in-out 300ms;
@@ -372,7 +389,7 @@ html{
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: transform 1000ms ease-in-out 1000ms;
+        transition: transform 2000ms ease-in-out 500ms;
         max-width: 250px;
         width: 100%;
         h1{
@@ -533,14 +550,14 @@ html{
     &[data-state="hidden"]{
         transform: translateY(80%);
         #form-back-container{
-            transition: opacity 300ms ease-in-out;
+            transition: opacity 100ms ease-in-out;
             opacity: 0;
             img{
                 opacity: 0;
             }
         }
         #form-formulaire-container{
-            transition: transform 1000ms ease-in-out;
+            transition: transform 2000ms ease-in-out;
             transform: translateY(100%);
         }
         
@@ -568,6 +585,11 @@ html{
                     .image-colorizer{
                         width: calc(100vw - 120px);
                         opacity: 0.75;
+                    }
+                    .project-number{
+                        opacity: 1;
+                        font-size: 3vw;
+                        mix-blend-mode: normal;
                     }
                     .project-title{
                         top: 25%; left: 50%;

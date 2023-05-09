@@ -290,6 +290,21 @@ html {
   opacity: 0;
   transition: opacity 300ms ease-in-out;
 }
+#main-container #main-project-container #project-container .image-container .project-number {
+  position: absolute;
+  opacity: 1;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  top: 5px;
+  right: 5px;
+  font-family: basic-sans, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  opacity: 0.3;
+  transition: opacity 300ms ease-in-out;
+  mix-blend-mode: difference;
+}
 #main-container #main-project-container #project-container .image-container .project-title, #main-container #main-project-container #project-container .image-container .project-description {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -326,6 +341,11 @@ html {
 }
 #main-container #main-project-container #project-container .image-container:hover .image-colorizer {
   opacity: 0.75;
+}
+#main-container #main-project-container #project-container .image-container:hover .project-number {
+  opacity: 1;
+  mix-blend-mode: normal;
+  transition: opacity 300ms ease-in-out 300ms, mix-blend-mode 300ms ease;
 }
 #main-container #main-project-container #project-container .image-container:hover .project-title, #main-container #main-project-container #project-container .image-container:hover .project-description {
   transition: top 300ms ease-in-out 300ms, opacity 300ms ease-in-out 300ms;
@@ -378,7 +398,7 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 1000ms ease-in-out 1000ms;
+  transition: transform 2000ms ease-in-out 500ms;
   max-width: 250px;
   width: 100%;
 }
@@ -544,14 +564,14 @@ html {
   transform: translateY(80%);
 }
 #form-container[data-state=hidden] #form-back-container {
-  transition: opacity 300ms ease-in-out;
+  transition: opacity 100ms ease-in-out;
   opacity: 0;
 }
 #form-container[data-state=hidden] #form-back-container img {
   opacity: 0;
 }
 #form-container[data-state=hidden] #form-formulaire-container {
-  transition: transform 1000ms ease-in-out;
+  transition: transform 2000ms ease-in-out;
   transform: translateY(100%);
 }
 #form-container[data-state=hidden] #form-bg {
@@ -577,6 +597,11 @@ html {
   #main-container #main-project-container #project-container .image-container .image-colorizer {
     width: calc(100vw - 120px);
     opacity: 0.75;
+  }
+  #main-container #main-project-container #project-container .image-container .project-number {
+    opacity: 1;
+    font-size: 3vw;
+    mix-blend-mode: normal;
   }
   #main-container #main-project-container #project-container .image-container .project-title {
     top: 25%;

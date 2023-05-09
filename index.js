@@ -29,6 +29,7 @@ let projectImage = document.querySelector(".project-image")
 let projectTitle = document.querySelector(".project-title")
 let projectDescription = document.querySelector(".project-description")
 let projectContainer = document.querySelector(".image-container")
+let projectNumber = document.querySelector(".project-number")
 
 //Boolean to prevent opening the form before it has finished closing it
 let closingForm = false
@@ -98,6 +99,8 @@ const nextProject = () => {
     }
     //Define a new var that let the index be currentProject minus 1, because it begins at 0
     let num = currentProject - 1
+    //Change the current project number
+    projectNumber.innerHTML = `${currentProject} / ${projectMax}`
     //Change the title of the HTML element to the current project
     projectTitle.innerHTML = projectsList[num].title
     //Change the description of the HTML element to the current project
@@ -138,6 +141,8 @@ const autoNextProject = () => {
         }
         //Define a new var that let the index be currentProject minus 1, because it begins at 0
         let num = currentProject - 1
+        //Change the current project number
+        projectNumber.innerHTML = `${currentProject} / ${projectMax}`
         //Change the title of the HTML element to the current project
         projectTitle.innerHTML = projectsList[num].title
         //Change the description of the HTML element to the current project
@@ -174,6 +179,8 @@ const previousProject = () => {
     }
     //Define a new var that let the index be currentProject minus 1, because it begins at 0
     let num = currentProject - 1
+    //Change the current project number
+    projectNumber.innerHTML = `${currentProject} / ${projectMax}`
     //Change the title of the HTML element to the current project
     projectTitle.innerHTML = projectsList[num].title
     //Change the description of the HTML element to the current project
