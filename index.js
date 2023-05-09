@@ -33,6 +33,8 @@ let projectNumber = document.querySelector(".project-number")
 
 //Boolean to prevent opening the form before it has finished closing it
 let closingForm = false
+//Boolean to let know if the user is on the form page
+let watchingForm = false
 
 //Define different Regex needed for form validation
 //Allow to use any name from any country in world
@@ -217,6 +219,8 @@ const openForm = () => {
     window.scrollTo(0, 0)
     //Block the vertical navigation for a moment
     htmlDoc.setAttribute("style", "overflow: hidden; overflow-x: hidden;")
+    //Tell that the user opened the form
+    watchingForm = false
     //This timeout is only here to prevent the animation from broking.
     //Without it, the animation couldn't run because of the display: none to display: flex
     setTimeout(() => {
@@ -253,6 +257,7 @@ const closeForm = () => {
     document.getElementById("form-container").setAttribute("style", "overflow: unset;")
     //Set the color theme to black again
     document.querySelector('meta[name="theme-color"]').setAttribute("content", "#1d1d1d")
+
     //Timeout to launch specified action after 2,2 seconds
     setTimeout(function() {
         //Hide the form-container so it isn't visible when scrolling down.
@@ -447,11 +452,12 @@ document.addEventListener('keydown', (event) =>{
 })
 
 
+// THIS PART IS A S3CR3T PART TO ACTIVATE THE K0N@MI C0DE AND ADD CONTENT ON THE WEBSITE
 
 //Keep the K0n@mi c0de in a variable
 const c0deK0n = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
 
-// Lancez la musique ici
+//Get the audio file for the music
 let audio = new Audio('./assets/nucleaire.mp3');
 
 //Array where to save the keys the user pressed
@@ -462,25 +468,39 @@ document.addEventListener('keydown', function(event) {
   //Add the pressed key to the array list
   pressedKey.push(event.key);
   
-  // Vérifiez si le tableau contient le code Konami complet
+  //Check if the array contains the c0de
   if (pressedKey.toString().indexOf(c0deK0n) >= 0) {
-    // audio.loop = false;
-    // audio.play();
+    //If the user is still on the welcome page or on the form
+    if (!enterWebsite || watchingForm){
+        //then empty the array
+        pressedKey = []
+        //And stop the function
+        return
+    }
+    //Remove the container display none to let it exists
     document.getElementById("main-scrt-container").removeAttribute("style")
+    //After 100ms, which is used to prevent the container to appears suddently
     setTimeout(() => {
+        //Set the data-state to visible to let it fade in
         document.getElementById("main-scrt-container").setAttribute("data-state", "visible")
     }, 100);
-    // Remettez le tableau à zéro pour permettre une autre entrée du code
+    //Empty the pressedKey array
     pressedKey = [];
   }
 });
 
+//Function to play or pause the music
 const playOrPause = () => {
+    //If the audio is on pause
     if (audio.paused) {
+        //Then play
         audio.play()
+        //And change the image to pause button
         document.getElementById("scrt-playpause").setAttribute("src", "./images/scrt/pause.svg")
-    } else {
+    } else { //if the audio is not on pause
+        //Pause the music
         audio.pause()
+        //And change the image to play button
         document.getElementById("scrt-playpause").setAttribute("src", "./images/scrt/play.svg")
     }
 }
