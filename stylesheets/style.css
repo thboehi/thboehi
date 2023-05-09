@@ -378,7 +378,7 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  transition: transform 1000ms ease-in-out;
+  transition: transform 1000ms ease-in-out 1000ms;
   max-width: 250px;
   width: 100%;
 }
@@ -551,6 +551,7 @@ html {
   opacity: 0;
 }
 #form-container[data-state=hidden] #form-formulaire-container {
+  transition: transform 1000ms ease-in-out;
   transform: translateY(100%);
 }
 #form-container[data-state=hidden] #form-bg {

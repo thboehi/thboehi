@@ -372,7 +372,7 @@ html{
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: transform 1000ms ease-in-out;
+        transition: transform 1000ms ease-in-out 1000ms;
         max-width: 250px;
         width: 100%;
         h1{
@@ -540,6 +540,7 @@ html{
             }
         }
         #form-formulaire-container{
+            transition: transform 1000ms ease-in-out;
             transform: translateY(100%);
         }
         
