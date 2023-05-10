@@ -260,7 +260,6 @@ const closeForm = () => {
     document.getElementById("form-container").setAttribute("style", "overflow: unset;")
     //Set the color theme to black again
     document.querySelector('meta[name="theme-color"]').setAttribute("content", "#1d1d1d")
-
     //Timeout to launch specified action after 2,2 seconds
     setTimeout(function() {
         //Hide the form-container so it isn't visible when scrolling down.
