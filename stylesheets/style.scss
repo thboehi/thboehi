@@ -438,7 +438,7 @@ html{
 }
 
 #form-container{
-    height: 100vh;
+    height: fit-content;
     width: 100vw;
     display: flex;
     align-items: center;
@@ -518,7 +518,7 @@ html{
             max-width: 250px;
             width: 100%;
             overflow: hidden;
-            height: 430px;
+            height: 500px;
             transition: height 1000ms ease-out;
             &[data-state="hidden"]{
                 height: 0px;
