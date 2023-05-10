@@ -38,7 +38,9 @@ let watchingForm = false
 
 //Define different Regex needed for form validation
 //Allow to use any name from any country in world
-let regexNameSurname = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,}$/u;
+let regexName = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,}$/u;
+//Allow to use any name from any country in world
+let regexSurname = /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,}$/u;
 //Small regex for email validation that check if contain caracters, @, caracters, ., and caracters.
 let regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 //Accept only swiss numbers for the moment
@@ -48,6 +50,7 @@ let regexMessage = /(.|\s)*\S(.|\s)*/;
 
 //Boolean to check if the input fields are corrects or not. By default on false
 let nameCorrect = false
+let surnameCorrect = false
 let phoneCorrect = false
 let emailCorrect = false
 let messageCorrect = false
@@ -276,7 +279,7 @@ const checkInput = (type) => {
         //If it's the input[name]
         case "name":
             //Test the regex to see if it's valid or not
-            if (regexNameSurname.test(document.getElementById(type).value)){
+            if (regexName.test(document.getElementById(type).value)){
                 //If the content is correct, show a green marker that tell the user that he is correct
                 document.getElementById(`${type}-ok`).setAttribute("data-state", "visible")
                 //In case the wrong marker was shown, hide it
@@ -292,6 +295,26 @@ const checkInput = (type) => {
                 document.getElementById(`${type}-wrong`).setAttribute("data-state", "visible")
                 //Change the boolean to prevent sending the form
                 nameCorrect = false
+            }
+            break;
+        case "surname":
+            //Test the regex to see if it's valid or not
+            if (regexSurname.test(document.getElementById(type).value)){
+                //If the content is correct, show a green marker that tell the user that he is correct
+                document.getElementById(`${type}-ok`).setAttribute("data-state", "visible")
+                //In case the wrong marker was shown, hide it
+                document.getElementById(`${type}-wrong`).setAttribute("data-state", "hidden")
+                //In case the user had already clicked on Envoyer and the background was red, change it
+                document.getElementById(type).setAttribute("data-missing", "false")
+                //Change the boolean to let the user send his form
+                surnameCorrect = true
+            } else { //If the regex didn't pass
+                //Hide the green marker, in case it was shown
+                document.getElementById(`${type}-ok`).setAttribute("data-state", "hidden")
+                //Show the red cross to tell the user that the value isn't correct
+                document.getElementById(`${type}-wrong`).setAttribute("data-state", "visible")
+                //Change the boolean to prevent sending the form
+                surnameCorrect = false
             }
             break;
         case "phone":
@@ -362,6 +385,11 @@ const sendForm = () => {
         //then set attribute data-missing to true
         document.getElementById("name").setAttribute("data-missing", "true")
     }
+    //If nameCorrect is on false
+    if (!surnameCorrect){
+        //then set attribute data-missing to true
+        document.getElementById("surname").setAttribute("data-missing", "true")
+    }
     //If phoneCorrect is on false
     if (!phoneCorrect){
         //then set attribute data-missing to true
@@ -377,8 +405,8 @@ const sendForm = () => {
         //then set attribute data-missing to true
         document.getElementById("message").setAttribute("data-missing", "true")
     }
-    //If all three are on true
-    if (emailCorrect && phoneCorrect && emailCorrect){
+    //If all four are on true
+    if (emailCorrect && phoneCorrect && nameCorrect && surnameCorrect){
         //Hide the error message
         document.getElementById("form-error-message").setAttribute("data-state", "hidden")
         //Hide the info message
