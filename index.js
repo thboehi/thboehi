@@ -12,8 +12,9 @@ let projectsList, projectMax
 let onPause = false
 //Variable to let know if the user is hover the player
 let isWatching = false
-//Variable that save
+//Variable that save last time the user clicked on Next or Previous
 let lastClick
+//Variable to tell which project is active. By default, first is active
 let currentProject = 1
 //Get the file project.json where all the projects are stored. Easy to add new projects
 fetch('./assets/project.json')
@@ -23,7 +24,15 @@ fetch('./assets/project.json')
     projectsList = data
     //Save the number on projects in the file
     projectMax = data.length
-});
+  })
+  .catch(error => {
+    //Log the error in the console
+    console.log(error)
+    //Show an alert to explain why I had to do that
+    alert("Merci de charger cette page via un Live Server.\n\nGoogle Chrome n'autorisant pas de faire un fetch depuis un fichier local (CORS Policy), il est impératif d'utiliser un live server pour que ce site fonctionne comme s'il était hébergé.\n\nCordialement\nThoma")
+    //Close the page
+    close()
+  });
 //Get elements for the project container
 let projectImage = document.querySelector(".project-image")
 let projectTitle = document.querySelector(".project-title")
@@ -64,11 +73,11 @@ const goToPosition = urlParams.get('position')
 
 //Function to get the user to the top/left page
 const toTop = () => {
-    //Timeout to launch the action after 500ms
+    //Timeout to launch the action after 10ms, just to prevent some issues with direct load
     setTimeout(function() {
         //Set the position of the user to Top0 and Left0
         window.scrollTo(0, 0)
-    }, 500)
+    }, 10)
 }
 
 //Function to enter the website when on "Welcome page"
