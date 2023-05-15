@@ -39,18 +39,79 @@ html {
   margin-bottom: 100px;
   transition: transform 1000ms ease-in-out;
 }
-#entry-container #entry-text-container h1, #entry-container #entry-text-container p {
-  color: #f2f4f3;
+#entry-container #entry-text-container #card {
+  aspect-ratio: 1.5/1;
+  background-color: #ff595e;
+  display: block;
+  width: 400px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transform: perspective(1000px);
+  transform: translateZ(0px);
+  transform-style: preserve-3d;
+}
+#entry-container #entry-text-container #text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  transform: perspective(1000px);
+  transform: translateZ(0px);
+  transform-style: preserve-3d;
+}
+#entry-container #entry-text-container #card h1::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "WAXIE";
+  color: transparent;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  transform: perspective(1000px);
+  transform: translateZ(-60px);
+  transform-style: preserve-3d;
+  transition: 300ms ease-out;
+}
+#entry-container #entry-text-container #card:hover h1::after {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 #entry-container #entry-text-container h1 {
-  font-family: "Rhastelie", sans-serif;
+  text-align: center;
+  vertical-align: center;
+  color: #F2F4F3;
+  font-size: 4rem;
+  font-family: "Rhastelie";
   font-weight: 400;
-  font-size: 6rem;
+  transform: perspective(1000px);
+  transform: translateZ(60px);
+  transform-style: preserve-3d;
+}
+#entry-container #entry-text-container #card p::after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: ".webdev";
+  color: transparent;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0);
+  transform: perspective(1000px);
+  transform: translateZ(-60px);
+  transform-style: preserve-3d;
+  transition: 300ms ease-out;
+}
+#entry-container #entry-text-container #card:hover p::after {
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
 }
 #entry-container #entry-text-container p {
+  text-align: center;
+  vertical-align: center;
+  color: #F2F4F3;
   font-family: basic-sans, sans-serif;
   font-weight: 400;
   font-style: normal;
+  transform: perspective(1000px);
+  transform: translateZ(60px);
+  transform-style: preserve-3d;
 }
 #entry-container #entry-button {
   all: unset;
