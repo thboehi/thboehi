@@ -395,7 +395,7 @@ html {
 #main-container #main-project-container #project-container .image-container:hover {
   transform: scale(0.98);
   border: #f2f4f3 solid 3px;
-  transition: transform 300ms ease-in-out, border 300ms ease-in-out 300ms;
+  transition: transform 300ms ease-in-out, border 300ms ease-in-out;
 }
 #main-container #main-project-container #project-container .image-container:hover img {
   filter: blur(4px);

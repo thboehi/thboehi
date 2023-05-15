@@ -385,7 +385,7 @@ html{
                 &:hover{
                     transform: scale(0.98);
                     border: $light solid 3px;
-                    transition: transform 300ms ease-in-out, border 300ms ease-in-out 300ms;
+                    transition: transform 300ms ease-in-out, border 300ms ease-in-out;
                     img{
                         filter: blur(4px);
                     }
