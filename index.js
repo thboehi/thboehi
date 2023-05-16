@@ -87,8 +87,6 @@ const enterWebsite = () => {
     enterContainer.setAttribute("data-state", "hidden")
     //Hide the welcome, it disapears before anything else
     enterWebsiteButton.setAttribute("data-state", "hidden")
-    //Activate the overflow on the page to let the user go up and down, but prevent horizontal navigation
-    htmlDoc.setAttribute("style", "overflow: none; overflow-x: hidden;")
     //Do the same to the body
     document.querySelector('body').setAttribute("style", "overflow: none; overflow-x: hidden;")
     //Change the enteredWebsite boolean to true, to prevent function to run again. Just to be sure.
@@ -96,6 +94,8 @@ const enterWebsite = () => {
     setTimeout(() => {
         //Change the color of the theme at the end of the animation (Change the top bar on iOS). This is not important but it make the website far more enjoyable.
         document.querySelector('meta[name="theme-color"]').setAttribute("content", "#1d1d1d")
+        //Activate the overflow on the page to let the user go up and down, but prevent horizontal navigation
+        htmlDoc.setAttribute("style", "overflow: none; overflow-x: hidden;")
     }, 1500);
 }
 
@@ -445,10 +445,20 @@ const sendForm = () => {
 //         htmlDoc.scrollLeft = 0
 //     }
 // }
+
+//Event to open the website is not already opened
 window.addEventListener('wheel', event => {
-    console.log(event);
-    enterWebsite()
+    if (event.deltaY > 0 && !enteredWebsite) {
+        enterWebsite()
+    }
   });
+
+window.addEventListener('touchmouve', event => {
+    console.log(event)
+    if (event.deltaY > 0 && !enteredWebsite) {
+        enterWebsite()
+    }
+});
 
 //This is ear attributes and go directly to the page asked
 if (goToPosition === "form"){
