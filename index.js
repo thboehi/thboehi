@@ -440,10 +440,15 @@ const sendForm = () => {
 
 //This event listener is to prevent user to scroll to the left. This can happen on mobile version of the website
 // window.addEventListener("scroll", event => {
+//     console.log("asd")
 //     if (htmlDoc.scrollLeft !== 0){
 //         htmlDoc.scrollLeft = 0
 //     }
-// } )
+// }
+window.addEventListener('wheel', event => {
+    console.log(event);
+    enterWebsite()
+  });
 
 //This is ear attributes and go directly to the page asked
 if (goToPosition === "form"){
