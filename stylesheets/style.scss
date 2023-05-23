@@ -694,6 +694,7 @@ html{
     }
     &[data-state="hidden"]{
         transform: translateY(80%);
+        transition: transform 1200ms ease-in-out;
         #form-back-container{
             transition: opacity 100ms ease-in-out;
             opacity: 0;
@@ -702,7 +703,7 @@ html{
             }
         }
         #form-formulaire-container{
-            transition: transform 2000ms ease-in-out;
+            transition: transform 1200ms ease-in-out;
             transform: translateY(100%);
         }
         
