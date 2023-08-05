@@ -342,6 +342,14 @@ html {
   left: 0;
   transition: filter 300ms ease-in-out;
 }
+#main-container #main-project-container #project-container .image-container img:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #F2F4F3;
+}
 #main-container #main-project-container #project-container .image-container .image-colorizer {
   aspect-ratio: 16/9;
   width: 480px;
