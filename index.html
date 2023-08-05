@@ -5,7 +5,7 @@
 <!--[if gt IE 8]>      <html class="no-js"> <!<![endif]-->
 <html lang="fr" style="overflow: hidden;">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Thomas Boehi | WAXIE</title>
         <meta name="description" content="Portfolio de Thomas Boehi (WAXIE). Étudiant suisse en technologie web.">
@@ -92,6 +92,9 @@
                    </svg>
                    
             </div>
+            <div id="mobile-action-element" style="width: 200px; height: 200px; background-color: cadetblue;">
+
+            </div>
         </div>
         <!-- END OF MAIN PAGE -->
 
@@ -106,8 +109,8 @@
                 <p>de contact</p>
                 <p id="form-error-message" data-state="hidden">Merci de remplir tous les champs obligatoires avant d'envoyer le formulaire.</p>
                 <p id="form-info-message" data-state="visible">Les champs accompagnés d'un astérix sont obligatoires.</p>
-                <p id="form-confirm-message" data-state="hidden">Merci! Le formulaire a bien été envoyé. Vous avez reçu une copie. (Faux)</p>
-                <form id="form" action="#" data-state="visible">
+                <p id="form-confirm-message" data-state="hidden">Merci! Le formulaire a bien été envoyé. Vous avez reçu une copie.</p>
+                <form id="form" action="assets/php/send.php" method="post" data-state="visible">
                     <div class="form-input-container">
                         <img src="./images/wrong.svg" alt="Wrong" data-state="hidden" id="name-wrong" class="input-wrong">
                         <img src="./images/ok.svg" alt="Ok" data-state="hidden" id="name-ok" class="input-ok">
@@ -142,13 +145,13 @@
                         <label for="message">Message</label>
                         <textarea name="message" id="message" onblur="checkInput('message')" cols="30" rows="10" data-missing="false"></textarea>
                     </div>
+                    <button id="form-button-submit" onclick="sendForm()" type="submit">Envoyer</button>
                 </form>
-                <button id="form-button-submit" onclick="sendForm()">Envoyer</button>
             </div>
             <span id="form-bg"></span>
         </div>
         <!-- END OF FORMULAIRE PAGE -->
-        <script src="./index.js" async></script>
-        <script src="./assets/js/vanilla-tilt.min.js" type="text/javascript"></script>
+        <script src="assets/js/index.js" async></script>
+        <script src="assets/js/vanilla-tilt.min.js" type="text/javascript"></script>
     </body>
 </html>
