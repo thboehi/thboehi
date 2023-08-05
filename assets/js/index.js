@@ -87,8 +87,6 @@ const enterWebsite = () => {
     enterContainer.setAttribute("data-state", "hidden")
     //Hide the welcome, it disapears before anything else
     enterWebsiteButton.setAttribute("data-state", "hidden")
-    //Activate the overflow on the page to let the user go up and down, but prevent horizontal navigation
-    htmlDoc.setAttribute("style", "overflow: none; overflow-x: hidden;")
     //Do the same to the body
     document.querySelector('body').setAttribute("style", "overflow: none; overflow-x: hidden;")
     //Change the enteredWebsite boolean to true, to prevent function to run again. Just to be sure.
@@ -96,6 +94,8 @@ const enterWebsite = () => {
     setTimeout(() => {
         //Change the color of the theme at the end of the animation (Change the top bar on iOS). This is not important but it make the website far more enjoyable.
         document.querySelector('meta[name="theme-color"]').setAttribute("content", "#1d1d1d")
+        //Activate the overflow on the page to let the user go up and down, but prevent horizontal navigation
+        htmlDoc.setAttribute("style", "overflow: none; overflow-x: hidden;")
     }, 1500);
 }
 
@@ -440,10 +440,25 @@ const sendForm = () => {
 
 //This event listener is to prevent user to scroll to the left. This can happen on mobile version of the website
 // window.addEventListener("scroll", event => {
+//     console.log("asd")
 //     if (htmlDoc.scrollLeft !== 0){
 //         htmlDoc.scrollLeft = 0
 //     }
-// } )
+// }
+
+//Event to open the website is not already opened
+window.addEventListener('wheel', event => {
+    if (event.deltaY > 0 && !enteredWebsite) {
+        enterWebsite()
+    }
+  });
+
+window.addEventListener('touchmouve', event => {
+    console.log(event)
+    if (event.deltaY > 0 && !enteredWebsite) {
+        enterWebsite()
+    }
+});
 
 //This is ear attributes and go directly to the page asked
 if (goToPosition === "form"){
@@ -540,3 +555,64 @@ const playOrPause = () => {
         document.getElementById("scrt-playpause").setAttribute("src", "./images/scrt/play.svg")
     }
 }
+
+// Capturer l'événement de soumission du formulaire
+document.getElementById("form").addEventListener("submit", function (event) {
+    event.preventDefault(); // Empêcher le rechargement de la page
+
+    // Récupérer les données du formulaire
+    var formData = new FormData(event.target);
+
+    // Envoyer les données du formulaire via AJAX
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "/assets/php/send.php");
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            // Mettre à jour le conteneur de réponse avec le message de retour
+            var responseMessage = document.getElementById("form-confirm-message");
+            if (xhr.status === 200) {
+                responseMessage.innerHTML = "Merci! Le formulaire a bien été envoyé. Vous recevrez une copie sous peu.";
+            } else {
+                responseMessage.innerHTML = "Une erreur est survenue lors de l'envoi de l'email.";
+                responseMessage.setAttribute("data-error", "true");
+            }
+        }
+    };
+    xhr.send(formData);
+});
+
+/* TEST FOR MOBILE KONAMI CODE ALTERNATIVE */
+
+//const showGarden = () => {
+//    console.log("Show Garden function")
+//}
+//// Fonction pour détecter l'événement tactile ou le geste spécifique
+//function detectMobileAction(callback) {
+//    var touchsurface = document.getElementById('mobile-action-element'); // Remplacez 'mobile-action-element' par l'ID de l'élément interactif de votre choix
+//
+//    var startX, startY, distX, distY;
+//
+//    touchsurface.addEventListener('touchstart', function(e) {
+//      var touchobj = e.changedTouches[0];
+//      startX = touchobj.pageX;
+//      startY = touchobj.pageY;
+//      distX = 0;
+//      distY = 0;
+//    }, false);
+//
+//    touchsurface.addEventListener('touchmove', function(e) {
+//      var touchobj = e.changedTouches[0];
+//      distX = touchobj.pageX - startX;
+//      distY = touchobj.pageY - startY;
+//    }, false);
+//
+//    touchsurface.addEventListener('touchend', function(e) {
+//      // Définissez ici la condition pour déclencher votre action, par exemple, si l'utilisateur a fait glisser son doigt vers la droite
+//      if (distX > 100 && Math.abs(distY) < 100) {
+//        callback(); // Appel de la fonction showGarden()
+//      }
+//    }, false);
+//  }
+//
+//  // Appel de la fonction detectMobileAction avec showGarden comme callback
+//  detectMobileAction(showGarden);

@@ -5,7 +5,7 @@
 <!--[if gt IE 8]>      <html class="no-js"> <!<![endif]-->
 <html lang="fr" style="overflow: hidden;">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Thomas Boehi | WAXIE</title>
         <meta name="description" content="Portfolio de Thomas Boehi (WAXIE). Étudiant suisse en technologie web.">
@@ -76,6 +76,12 @@
             <div id="main-scrt-container" data-state="hidden" style="display: none;">
                 <h3 id="scrt-title">Jardin Secret</h3>
                 <p class="scrt-description">La musique est l'un des aspects les plus importants de ma vie. J'en écoute énormément et c'est pourquoi je te propose de découvrir une musique de mon groupe préféré.</p>
+                <div id="main-scrt-cards-container">
+                    <div class="main-scrt-card">
+                        <h3 class="main-scrt-card-title">Musique</h3>
+                        <p>Texte aléatoire</p>
+                    </div>
+                </div>
                 <div id="scrt-cover-container" onclick="playOrPause()">
                     <img id="scrt-album-cover" src="./images/scrt/nucleaire.jpg" alt="Odezenne - Nucléaire">
                     <img id="scrt-playpause" src="./images/scrt/play.svg" alt="Jouer">
@@ -85,6 +91,9 @@
                     <path fill="#1ED760" d="m83.996 0.277c-46.249 0-83.743 37.493-83.743 83.742 0 46.251 37.494 83.741 83.743 83.741 46.254 0 83.744-37.49 83.744-83.741 0-46.246-37.49-83.738-83.745-83.738l0.001-0.004zm38.404 120.78c-1.5 2.46-4.72 3.24-7.18 1.73-19.662-12.01-44.414-14.73-73.564-8.07-2.809 0.64-5.609-1.12-6.249-3.93-0.643-2.81 1.11-5.61 3.926-6.25 31.9-7.291 59.263-4.15 81.337 9.34 2.46 1.51 3.24 4.72 1.73 7.18zm10.25-22.805c-1.89 3.075-5.91 4.045-8.98 2.155-22.51-13.839-56.823-17.846-83.448-9.764-3.453 1.043-7.1-0.903-8.148-4.35-1.04-3.453 0.907-7.093 4.354-8.143 30.413-9.228 68.222-4.758 94.072 11.127 3.07 1.89 4.04 5.91 2.15 8.976v-0.001zm0.88-23.744c-26.99-16.031-71.52-17.505-97.289-9.684-4.138 1.255-8.514-1.081-9.768-5.219-1.254-4.14 1.08-8.513 5.221-9.771 29.581-8.98 78.756-7.245 109.83 11.202 3.73 2.209 4.95 7.016 2.74 10.733-2.2 3.722-7.02 4.949-10.73 2.739z"/>
                    </svg>
                    
+            </div>
+            <div id="mobile-action-element" style="width: 200px; height: 200px; background-color: cadetblue;">
+
             </div>
         </div>
         <!-- END OF MAIN PAGE -->
@@ -100,8 +109,8 @@
                 <p>de contact</p>
                 <p id="form-error-message" data-state="hidden">Merci de remplir tous les champs obligatoires avant d'envoyer le formulaire.</p>
                 <p id="form-info-message" data-state="visible">Les champs accompagnés d'un astérix sont obligatoires.</p>
-                <p id="form-confirm-message" data-state="hidden">Merci! Le formulaire a bien été envoyé. Vous avez reçu une copie. (Faux)</p>
-                <form id="form" action="#" data-state="visible">
+                <p id="form-confirm-message" data-state="hidden">Merci! Le formulaire a bien été envoyé. Vous avez reçu une copie.</p>
+                <form id="form" action="assets/php/send.php" method="post" data-state="visible">
                     <div class="form-input-container">
                         <img src="./images/wrong.svg" alt="Wrong" data-state="hidden" id="name-wrong" class="input-wrong">
                         <img src="./images/ok.svg" alt="Ok" data-state="hidden" id="name-ok" class="input-ok">
@@ -136,13 +145,13 @@
                         <label for="message">Message</label>
                         <textarea name="message" id="message" onblur="checkInput('message')" cols="30" rows="10" data-missing="false"></textarea>
                     </div>
+                    <button id="form-button-submit" onclick="sendForm()" type="submit">Envoyer</button>
                 </form>
-                <button id="form-button-submit" onclick="sendForm()">Envoyer</button>
             </div>
             <span id="form-bg"></span>
         </div>
         <!-- END OF FORMULAIRE PAGE -->
-        <script src="./index.js" async></script>
-        <script src="./assets/js/vanilla-tilt.min.js" type="text/javascript"></script>
+        <script src="assets/js/index.js" async></script>
+        <script src="assets/js/vanilla-tilt.min.js" type="text/javascript"></script>
     </body>
 </html>
