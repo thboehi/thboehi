@@ -212,7 +212,7 @@ const pauseAuto = () => {
         //Then disable it
         onPause = false
         //And rename the element play-pause-button to PAUSE
-        document.getElementById("play-pause-button").innerHTML = "PAUSE"
+        document.getElementById("play-pause-button").innerHTML = "PAUSE SLIDE"
     } else { //If not on pause
         //Enable pause
         onPause = true

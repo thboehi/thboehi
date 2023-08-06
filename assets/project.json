@@ -24,8 +24,8 @@
         "img": "./images/projects/newsletter.png"
     },
     {
-        "title": "Plex Home Theater",
-        "description": "A NodeJS app that turn on or off your Philips Hue lights when you play or stop a movie on plex.",
+        "title": "Plex HT",
+        "description": "Plex Home Theater is NodeJS app that turn on/off your Philips Hue based on your action on plex.",
         "link": "https://github.com/thboehi/Plex-Home-Theater",
         "img": "./images/projects/plexhometheater.png"
     },
