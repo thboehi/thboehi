@@ -1,7 +1,7 @@
 # Hi, I'm Thoma(s) ! 👋
 
 
-## 🚀 About Me
+## 👨🏽 About Me
 I'm a student in web development at the [SAE Institute](https://sae.swiss) in Geneva.
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/thbo.ch-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://thbo.ch/)
