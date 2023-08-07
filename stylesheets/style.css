@@ -225,8 +225,11 @@ html {
 }
 #profile-description{
   font-family: basic-sans, sans-serif;
-  font-weight: 400;
+  font-weight: 200;
   font-style: normal;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-align: center;
 }
 #main-container #main-profile-container #main-profile-socials-container {
   display: flex;
