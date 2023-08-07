@@ -47,5 +47,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     // Le formulaire n'a pas été soumis, vous pouvez rediriger l'utilisateur ou afficher un message d'erreur.
     echo "Le formulaire n'a pas été soumis.";
+    header('Location: /?position=form');
 }
 ?>
