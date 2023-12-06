@@ -561,25 +561,34 @@ document.getElementById("form").addEventListener("submit", function (event) {
     event.preventDefault(); // Empêcher le rechargement de la page
 
     // Récupérer les données du formulaire
-    var formData = new FormData(event.target);
+    const formData = new FormData(event.target);
 
-    // Envoyer les données du formulaire via AJAX
-    var xhr = new XMLHttpRequest();
-    xhr.open("POST", "/assets/php/send.php");
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-            // Mettre à jour le conteneur de réponse avec le message de retour
-            var responseMessage = document.getElementById("form-confirm-message");
-            if (xhr.status === 200) {
-                responseMessage.innerHTML = "Merci! Le formulaire a bien été envoyé. Vous recevrez une copie sous peu.";
-            } else {
-                responseMessage.innerHTML = "Une erreur est survenue lors de l'envoi de l'email.";
-                responseMessage.setAttribute("data-error", "true");
-            }
-        }
-    };
-    xhr.send(formData);
+    // Vérifier reCAPTCHA v3 avant d'envoyer les données via AJAX
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6LdOjicpAAAAAO1N_RfFFxvNnwzQI2D0R4mkYeBt', {action: 'submit'}).then(function(token) {
+            // Ajouter le token reCAPTCHA aux données du formulaire
+            formData.append('g-recaptcha-response', token);
+
+            // Envoyer les données du formulaire avec le token reCAPTCHA via AJAX
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "/assets/php/send.php");
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    // Mettre à jour le conteneur de réponse avec le message de retour
+                    let responseMessage = document.getElementById("form-confirm-message");
+                    if (xhr.status === 200) {
+                        responseMessage.innerHTML = "Merci! Le formulaire a bien été envoyé. Vous recevrez une copie sous peu.";
+                    } else {
+                        responseMessage.innerHTML = "Une erreur est survenue lors de l'envoi de l'email.";
+                        responseMessage.setAttribute("data-error", "true");
+                    }
+                }
+            };
+            xhr.send(formData);
+        });
+    });
 });
+
 
 /* TEST FOR MOBILE KONAMI CODE ALTERNATIVE */
 
