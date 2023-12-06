@@ -18,6 +18,28 @@ html {
   background-color: #1d1d1d;
 }
 
+.form-captcha{
+  font-size: 0.5rem;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
+.tippy-content{
+  font-family: basic-sans, sans-serif;
+}
+.tippy-box{
+  background: rgb(41,51,92);
+  background: linear-gradient(0deg, rgba(41,51,92,1) 0%, rgba(62,71,108,1) 100%);
+  border: rgba(255, 255, 255, 0.1) solid 1px;
+}
+.tippy-arrow{
+  color: rgb(29, 36, 65);
+}
+
 #entry-container {
   height: 100vh;
   width: 100vw;

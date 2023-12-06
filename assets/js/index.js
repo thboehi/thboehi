@@ -589,6 +589,11 @@ document.getElementById("form").addEventListener("submit", function (event) {
     });
 });
 
+tippy('#phone', {
+    content: 'Numéro suisse uniquement</br>au format <strong>07x ou 00417x</strong>',
+    allowHTML: true,
+});
+
 
 /* TEST FOR MOBILE KONAMI CODE ALTERNATIVE */
 

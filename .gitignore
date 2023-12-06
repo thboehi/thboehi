@@ -6,3 +6,5 @@
 .idea/www.iml
 .idea/workspace.xml.tmp
 .DS_Store
+.idea/watcherTasks.xml
+.idea/jsLibraryMappings.xml
