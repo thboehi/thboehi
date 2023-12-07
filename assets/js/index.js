@@ -96,6 +96,8 @@ const enterWebsite = () => {
         document.querySelector('meta[name="theme-color"]').setAttribute("content", "#1d1d1d")
         //Activate the overflow on the page to let the user go up and down, but prevent horizontal navigation
         htmlDoc.setAttribute("style", "overflow: none; overflow-x: hidden;")
+        //Launch the name animation
+        profileUsernameAnimationAdd()
     }, 1500);
 }
 
@@ -188,7 +190,7 @@ const previousProject = () => {
         //Set the current project to the last project
         currentProject = projectMax
     } else {
-        //Decrement project to go to previous 
+        //Decrement project to go to previous
         currentProject--
     }
     //Define a new var that let the index be currentProject minus 1, because it begins at 0
@@ -518,7 +520,7 @@ let pressedKey = [];
 document.addEventListener('keydown', function(event) {
   //Add the pressed key to the array list
   pressedKey.push(event.key);
-  
+
   //Check if the array contains the c0de
   if (pressedKey.toString().indexOf(c0deK0n) >= 0) {
     //If the user is still on the welcome page or on the form
@@ -593,6 +595,89 @@ tippy('#phone', {
     content: 'Numéro suisse uniquement</br>au format <strong>07x ou 00417x</strong>',
     allowHTML: true,
 });
+
+let animationRunning = false
+
+const profileUsernameAnimationAdd = () => {
+    if (animationRunning) {
+        console.log("Animation is already running...")
+        return
+    } else {
+        animationRunning = true
+        const element = document.getElementById("profile-username")
+        setTimeout(() => {
+            element.innerText = "THOBO"
+        }, 100)
+
+        setTimeout(() => {
+            element.innerText = "THOBOE"
+        }, 200)
+
+        setTimeout(() => {
+            element.innerText = "THOMBO"
+        }, 300)
+
+        setTimeout(() => {
+            element.innerText = "THOMBOE"
+        }, 400)
+
+        setTimeout(() => {
+            element.innerText = "THOMABOE"
+        }, 500)
+
+        setTimeout(() => {
+            element.innerText = "THOMABOEH"
+        }, 600)
+
+        setTimeout(() => {
+            element.innerText = "THOMA BOEH"
+        }, 700)
+
+        setTimeout(() => {
+            element.innerText = "THOMA BOEHI"
+        }, 800)
+
+        setTimeout(profileUsernameAnimationRemove, 2000)
+    }
+
+
+
+}
+
+const profileUsernameAnimationRemove = () => {
+
+    animationRunning = true
+    const element = document.getElementById("profile-username")
+    setTimeout(() => {
+        element.innerText = "THOMABOEHI"
+    }, 50)
+
+    setTimeout(() => {
+        element.innerText = "THOMABOEH"
+    }, 100)
+
+    setTimeout(() => {
+        element.innerText = "THOMBOEH"
+    }, 150)
+
+    setTimeout(() => {
+        element.innerText = "THOMBOE"
+    }, 200)
+
+    setTimeout(() => {
+        element.innerText = "THOBOE"
+    }, 250)
+
+    setTimeout(() => {
+        element.innerText = "THOBO"
+    }, 300)
+
+    setTimeout(() => {
+        element.innerText = "THBO"
+    }, 350)
+    animationRunning = false
+
+}
 
 
 /* TEST FOR MOBILE KONAMI CODE ALTERNATIVE */
