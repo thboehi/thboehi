@@ -722,7 +722,8 @@ html {
   opacity: 1;
 }
 #form-container #form-button-submit {
-  all: unset;
+  background: none;
+  font-size: 1rem;
   border: #f2f4f3 solid 2px;
   padding: 5px 20px;
   font-family: basic-sans, sans-serif;
@@ -774,6 +775,10 @@ html {
 #form-container[data-state=hidden] #form-bg {
   height: 0px;
   width: 250%;
+}
+
+.makeitbounce{
+  animation: bounce 500ms;
 }
 
 @media screen and (max-width: 768px) {
@@ -869,16 +874,16 @@ html {
     transform: translateX(0px);
   }
   15% {
-    transform: translateX(-10px);
+    transform: translateX(-6px);
   }
   30% {
-    transform: translateX(10px);
+    transform: translateX(6px);
   }
   45% {
-    transform: translateX(-5px);
+    transform: translateX(-3px);
   }
   60% {
-    transform: translateX(5px);
+    transform: translateX(3px);
   }
   75% {
     transform: translateX(-1px);
