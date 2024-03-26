@@ -586,8 +586,11 @@ document.getElementById("form").addEventListener("submit", function (event) {
         document.getElementById("form-error-message").setAttribute("data-state", "visible")
         //and hide the info message
         document.getElementById("form-info-message").setAttribute("data-state", "hidden")
-        //cancel form submit if not correct
-        event.preventDefault()
+        //make button bounce
+        document.getElementById("form-button-submit").classList.add("makeitbounce")
+        document.getElementById("form-button-submit").onanimationend = () => {
+            document.getElementById("form-button-submit").classList.remove("makeitbounce")
+        }
     }
 
     
