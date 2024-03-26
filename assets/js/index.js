@@ -69,7 +69,7 @@ const queryString = window.location.search;
 //Create a new URLSearchParams list
 const urlParams = new URLSearchParams(queryString);
 //Get the position attribute/params
-const goToPosition = urlParams.get('position')
+const goToPosition = urlParams.get('to')
 
 //Function to get the user to the top/left page
 const toTop = () => {
@@ -87,15 +87,17 @@ const enterWebsite = () => {
     enterContainer.setAttribute("data-state", "hidden")
     //Hide the welcome, it disapears before anything else
     enterWebsiteButton.setAttribute("data-state", "hidden")
-    //Activate the overflow on the page to let the user go up and down, but prevent horizontal navigation
-    htmlDoc.setAttribute("style", "overflow: none; overflow-x: hidden;")
     //Do the same to the body
-    document.querySelector('body').setAttribute("style", "overflow: none; overflow-x: hidden;")
+    document.querySelector('html').setAttribute("style", "overflow: hidden; overflow-x: hidden;")
     //Change the enteredWebsite boolean to true, to prevent function to run again. Just to be sure.
     enteredWebsite = true
     setTimeout(() => {
         //Change the color of the theme at the end of the animation (Change the top bar on iOS). This is not important but it make the website far more enjoyable.
         document.querySelector('meta[name="theme-color"]').setAttribute("content", "#1d1d1d")
+        //Activate the overflow on the page to let the user go up and down, but prevent horizontal navigation
+        htmlDoc.setAttribute("style", "overflow: unset; overflow-x: hidden;")
+        //Launch the name animation
+        profileUsernameAnimationAdd()
     }, 1500);
 }
 
@@ -188,7 +190,7 @@ const previousProject = () => {
         //Set the current project to the last project
         currentProject = projectMax
     } else {
-        //Decrement project to go to previous 
+        //Decrement project to go to previous
         currentProject--
     }
     //Define a new var that let the index be currentProject minus 1, because it begins at 0
@@ -212,7 +214,7 @@ const pauseAuto = () => {
         //Then disable it
         onPause = false
         //And rename the element play-pause-button to PAUSE
-        document.getElementById("play-pause-button").innerHTML = "PAUSE"
+        document.getElementById("play-pause-button").innerHTML = "PAUSE SLIDE"
     } else { //If not on pause
         //Enable pause
         onPause = true
@@ -386,64 +388,27 @@ const checkInput = (type) => {
     }
 }
 
-//Function to send the form
-const sendForm = () => {
-    //If nameCorrect is on false
-    if (!nameCorrect){
-        //then set attribute data-missing to true
-        document.getElementById("name").setAttribute("data-missing", "true")
-    }
-    //If nameCorrect is on false
-    if (!surnameCorrect){
-        //then set attribute data-missing to true
-        document.getElementById("surname").setAttribute("data-missing", "true")
-    }
-    //If phoneCorrect is on false
-    if (!phoneCorrect){
-        //then set attribute data-missing to true
-        document.getElementById("phone").setAttribute("data-missing", "true")
-    }
-    //If emailCorrect is on false
-    if (!emailCorrect){
-        //then set attribute data-missing to true
-        document.getElementById("email").setAttribute("data-missing", "true")
-    }
-    //If messageCorrect is on false
-    if (!messageCorrect){
-        //then set attribute data-missing to true
-        document.getElementById("message").setAttribute("data-missing", "true")
-    }
-    //If all four are on true
-    if (emailCorrect && phoneCorrect && nameCorrect && surnameCorrect){
-        //Hide the error message
-        document.getElementById("form-error-message").setAttribute("data-state", "hidden")
-        //Hide the info message
-        document.getElementById("form-info-message").setAttribute("data-state", "hidden")
-        //Show the confirmation message
-        document.getElementById("form-confirm-message").setAttribute("data-state", "visible")
-        //Hide the form container
-        document.getElementById("form").setAttribute("data-state", "hidden")
-        //Hide the send button
-        document.getElementById("form-button-submit").setAttribute("data-state", "hidden")
-        //After 1 second, send to top
-        setTimeout(function() {
-            //Set the position of the user to Top0 and Left0
-            window.scrollTo(0, 0)
-        }, 1000)
-    } else { //If one or more is false
-        //Show the error message
-        document.getElementById("form-error-message").setAttribute("data-state", "visible")
-        //and hide the info message
-        document.getElementById("form-info-message").setAttribute("data-state", "hidden")
-    }
-}
-
 //This event listener is to prevent user to scroll to the left. This can happen on mobile version of the website
 // window.addEventListener("scroll", event => {
+//     console.log("asd")
 //     if (htmlDoc.scrollLeft !== 0){
 //         htmlDoc.scrollLeft = 0
 //     }
-// } )
+// }
+
+//Event to open the website is not already opened
+window.addEventListener('wheel', event => {
+    if (event.deltaY > 0 && !enteredWebsite) {
+        enterWebsite()
+    }
+  });
+
+window.addEventListener('touchmouve', event => {
+    console.log(event)
+    if (event.deltaY > 0 && !enteredWebsite) {
+        enterWebsite()
+    }
+});
 
 //This is ear attributes and go directly to the page asked
 if (goToPosition === "form"){
@@ -503,7 +468,7 @@ let pressedKey = [];
 document.addEventListener('keydown', function(event) {
   //Add the pressed key to the array list
   pressedKey.push(event.key);
-  
+
   //Check if the array contains the c0de
   if (pressedKey.toString().indexOf(c0deK0n) >= 0) {
     //If the user is still on the welcome page or on the form
@@ -540,3 +505,215 @@ const playOrPause = () => {
         document.getElementById("scrt-playpause").setAttribute("src", "./images/scrt/play.svg")
     }
 }
+
+// Capturer l'événement de soumission du formulaire
+document.getElementById("form").addEventListener("submit", function (event) {
+    event.preventDefault(); // Empêcher le rechargement de la page
+
+    //If nameCorrect is on false
+    if (!nameCorrect){
+        //then set attribute data-missing to true
+        document.getElementById("name").setAttribute("data-missing", "true")
+    }
+    //If nameCorrect is on false
+    if (!surnameCorrect){
+        //then set attribute data-missing to true
+        document.getElementById("surname").setAttribute("data-missing", "true")
+    }
+    //If phoneCorrect is on false
+    if (!phoneCorrect){
+        //then set attribute data-missing to true
+        document.getElementById("phone").setAttribute("data-missing", "true")
+    }
+    //If emailCorrect is on false
+    if (!emailCorrect){
+        //then set attribute data-missing to true
+        document.getElementById("email").setAttribute("data-missing", "true")
+    }
+    //If messageCorrect is on false
+    if (!messageCorrect){
+        //then set attribute data-missing to true
+        document.getElementById("message").setAttribute("data-missing", "true")
+    }
+    //If all four are on true
+    if (emailCorrect && phoneCorrect && nameCorrect && surnameCorrect){
+        //Hide the error message
+        document.getElementById("form-error-message").setAttribute("data-state", "hidden")
+        //Hide the info message
+        document.getElementById("form-info-message").setAttribute("data-state", "hidden")
+        //Show the confirmation message
+        document.getElementById("form-confirm-message").setAttribute("data-state", "visible")
+        //Hide the form container
+        document.getElementById("form").setAttribute("data-state", "hidden")
+        //Hide the send button
+        document.getElementById("form-button-submit").setAttribute("data-state", "hidden")
+        //After 1 second, send to top
+        setTimeout(function() {
+            //Set the position of the user to Top0 and Left0
+            window.scrollTo(0, 0)
+        }, 1000)
+        
+        // Récupérer les données du formulaire
+        const formData = new FormData(event.target);
+
+        // Vérifier reCAPTCHA v3 avant d'envoyer les données via AJAX
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LdOjicpAAAAAO1N_RfFFxvNnwzQI2D0R4mkYeBt', {action: 'submit'}).then(function(token) {
+                // Ajouter le token reCAPTCHA aux données du formulaire
+                formData.append('g-recaptcha-response', token);
+
+                // Envoyer les données du formulaire avec le token reCAPTCHA via AJAX
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "/assets/php/send.php");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        // Mettre à jour le conteneur de réponse avec le message de retour
+                        let responseMessage = document.getElementById("form-confirm-message");
+                        if (xhr.status === 200) {
+                            responseMessage.innerHTML = "Merci! Le formulaire a bien été envoyé. Vous recevrez une copie sous peu.";
+                        } else {
+                            responseMessage.innerHTML = "Une erreur est survenue lors de l'envoi de l'email.";
+                            responseMessage.setAttribute("data-error", "true");
+                        }
+                    }
+                };
+                xhr.send(formData);
+            });
+        });
+
+    } else { //If one or more is false
+        //Show the error message
+        document.getElementById("form-error-message").setAttribute("data-state", "visible")
+        //and hide the info message
+        document.getElementById("form-info-message").setAttribute("data-state", "hidden")
+        //cancel form submit if not correct
+        event.preventDefault()
+    }
+
+    
+});
+
+tippy('#phone', {
+    content: 'Numéro suisse uniquement</br>au format <strong>07x ou 00417x</strong>',
+    allowHTML: true,
+});
+
+let animationRunning = false
+
+const profileUsernameAnimationAdd = () => {
+    if (animationRunning) {
+        console.log("Animation is already running...")
+        return
+    } else {
+        animationRunning = true
+        const element = document.getElementById("profile-username")
+        setTimeout(() => {
+            element.innerText = "THOBO"
+        }, 100)
+
+        setTimeout(() => {
+            element.innerText = "THOBOE"
+        }, 200)
+
+        setTimeout(() => {
+            element.innerText = "THOMBO"
+        }, 300)
+
+        setTimeout(() => {
+            element.innerText = "THOMBOE"
+        }, 400)
+
+        setTimeout(() => {
+            element.innerText = "THOMABOE"
+        }, 500)
+
+        setTimeout(() => {
+            element.innerText = "THOMABOEH"
+        }, 600)
+
+        setTimeout(() => {
+            element.innerText = "THOMA BOEH"
+        }, 700)
+
+        setTimeout(() => {
+            element.innerText = "THOMA BOEHI"
+        }, 800)
+
+        setTimeout(profileUsernameAnimationRemove, 2000)
+    }
+
+
+
+}
+
+const profileUsernameAnimationRemove = () => {
+
+    animationRunning = true
+    const element = document.getElementById("profile-username")
+    setTimeout(() => {
+        element.innerText = "THOMABOEHI"
+    }, 50)
+
+    setTimeout(() => {
+        element.innerText = "THOMABOEH"
+    }, 100)
+
+    setTimeout(() => {
+        element.innerText = "THOMBOEH"
+    }, 150)
+
+    setTimeout(() => {
+        element.innerText = "THOMBOE"
+    }, 200)
+
+    setTimeout(() => {
+        element.innerText = "THOBOE"
+    }, 250)
+
+    setTimeout(() => {
+        element.innerText = "THOBO"
+    }, 300)
+
+    setTimeout(() => {
+        element.innerText = "THBO"
+    }, 350)
+    animationRunning = false
+
+}
+
+
+/* TEST FOR MOBILE KONAMI CODE ALTERNATIVE */
+
+//const showGarden = () => {
+//    console.log("Show Garden function")
+//}
+//// Fonction pour détecter l'événement tactile ou le geste spécifique
+//function detectMobileAction(callback) {
+//    var touchsurface = document.getElementById('mobile-action-element'); // Remplacez 'mobile-action-element' par l'ID de l'élément interactif de votre choix
+//
+//    var startX, startY, distX, distY;
+//
+//    touchsurface.addEventListener('touchstart', function(e) {
+//      var touchobj = e.changedTouches[0];
+//      startX = touchobj.pageX;
+//      startY = touchobj.pageY;
+//      distX = 0;
+//      distY = 0;
+//    }, false);
+//
+//    touchsurface.addEventListener('touchmove', function(e) {
+//      var touchobj = e.changedTouches[0];
+//      distX = touchobj.pageX - startX;
+//      distY = touchobj.pageY - startY;
+//    }, false);
+//
+//    touchsurface.addEventListener('touchend', function(e) {
+//      // Définissez ici la condition pour déclencher votre action, par exemple, si l'utilisateur a fait glisser son doigt vers la droite
+//      if (distX > 100 && Math.abs(distY) < 100) {
+//        callback(); // Appel de la fonction showGarden()
+//      }
+//    }, false);
+//  }
+//
+//  // Appel de la fonction detectMobileAction avec showGarden comme callback
+//  detectMobileAction(showGarden);

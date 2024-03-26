@@ -18,6 +18,28 @@ html {
   background-color: #1d1d1d;
 }
 
+.form-captcha{
+  font-size: 0.5rem;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.grecaptcha-badge {
+  visibility: hidden !important;
+}
+
+.tippy-content{
+  font-family: basic-sans, sans-serif;
+}
+.tippy-box{
+  background: rgb(41,51,92);
+  background: linear-gradient(0deg, rgba(41,51,92,1) 0%, rgba(62,71,108,1) 100%);
+  border: rgba(255, 255, 255, 0.1) solid 1px;
+}
+.tippy-arrow{
+  color: rgb(29, 36, 65);
+}
+
 #entry-container {
   height: 100vh;
   width: 100vw;
@@ -65,7 +87,7 @@ html {
   position: absolute;
   top: 0;
   left: 0;
-  content: "WAXIE";
+  content: "THOMAS";
   color: transparent;
   text-shadow: 0 0 10px rgba(0, 0, 0, 0);
   transform: perspective(1000px);
@@ -207,11 +229,19 @@ html {
   width: 100px;
   aspect-ratio: 1;
   border-radius: 10px;
-  border: #f2f4f3 solid 2px;
+  border: rgba(242, 244, 243, 0.5) solid 2px;
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
   margin-bottom: 10px;
+  transition: transform 100ms ease-out, border 100ms ease-out, box-shadow 100ms ease-out;
+}
+
+#main-container #main-profile-container #main-name-username #profile-pic:hover {
+  transform: scale(1.05);
+  border: #f2f4f3 solid 2px;
+  box-shadow: -1px 10px 10px 0px rgba(0,0,0,0.25);
+  transition: transform 200ms ease-out, border 200ms ease-out, box-shadow 200ms ease-out;
 }
 #main-container #main-profile-container #main-name-username #profile-name {
   font-family: basic-sans, sans-serif;
@@ -222,6 +252,14 @@ html {
   font-family: "Rhastelie", sans-serif;
   font-weight: 400;
   font-size: 2rem;
+}
+#profile-description{
+  font-family: basic-sans, sans-serif;
+  font-weight: 200;
+  font-style: normal;
+  margin-right: 20px;
+  margin-left: 20px;
+  text-align: center;
 }
 #main-container #main-profile-container #main-profile-socials-container {
   display: flex;
@@ -341,6 +379,14 @@ html {
   top: 0;
   left: 0;
   transition: filter 300ms ease-in-out;
+}
+#main-container #main-project-container #project-container .image-container img:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: #F2F4F3;
 }
 #main-container #main-project-container #project-container .image-container .image-colorizer {
   aspect-ratio: 16/9;
@@ -583,6 +629,11 @@ html {
 #form-container #form-formulaire-container #form-confirm-message {
   background-color: rgba(0, 255, 0, 0.4);
 }
+
+#form-container #form-formulaire-container #form-confirm-message[data-error="true"] {
+  background-color: rgba(255, 0, 0, 0.4);
+}
+
 #form-container #form-formulaire-container form {
   margin-top: 10px;
   display: flex;
@@ -591,7 +642,7 @@ html {
   max-width: 250px;
   width: 100%;
   overflow: hidden;
-  height: 500px;
+  height: 600px;
   transition: height 1000ms ease-out;
 }
 #form-container #form-formulaire-container form[data-state=hidden] {
@@ -672,7 +723,6 @@ html {
 }
 #form-container #form-button-submit {
   all: unset;
-  margin-top: 20px;
   border: #f2f4f3 solid 2px;
   padding: 5px 20px;
   font-family: basic-sans, sans-serif;
@@ -680,6 +730,8 @@ html {
   font-style: normal;
   transition: transform 300ms ease-out, background-color 300ms ease-out, color 300ms ease-out, opacity 300ms ease-out;
   cursor: pointer;
+  width: fit-content;
+  margin: 20px auto;
 }
 #form-container #form-button-submit:hover {
   transform: scale(0.95);
@@ -706,6 +758,7 @@ html {
 }
 #form-container[data-state=hidden] {
   transform: translateY(80%);
+  transition: transform 1200ms ease-in-out;
 }
 #form-container[data-state=hidden] #form-back-container {
   transition: opacity 100ms ease-in-out;
@@ -715,7 +768,7 @@ html {
   opacity: 0;
 }
 #form-container[data-state=hidden] #form-formulaire-container {
-  transition: transform 2000ms ease-in-out;
+  transition: transform 1200ms ease-in-out;
   transform: translateY(100%);
 }
 #form-container[data-state=hidden] #form-bg {

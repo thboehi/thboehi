@@ -22,5 +22,17 @@
         "description": "An advanced submit button that react to the content and the other elements.",
         "link": "https://codepen.io/thoma-boehi/pen/ZEqvPBx",
         "img": "./images/projects/newsletter.png"
+    },
+    {
+        "title": "Plex HT",
+        "description": "Plex Home Theater is NodeJS app that turn on/off your Philips Hue based on your action on plex.",
+        "link": "https://github.com/thboehi/Plex-Home-Theater",
+        "img": "./images/projects/plexhometheater.png"
+    },
+    {
+        "title": "Snitch",
+        "description": "The first french-community based website to snitch on bad behavior on minecraft servers.",
+        "link": "https://plsban.me",
+        "img": "./images/projects/snitch.png"
     }
 ]
