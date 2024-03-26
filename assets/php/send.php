@@ -2,7 +2,7 @@
 header('Content-type: text/html; charset=utf-8');
 
 // Clé secrète reCAPTCHA v3
-$secretKey = '6LdOjicpAAAAAJDU5_PgRNqQz_0wf7ZhJi72q78y';
+$secretKey = '';
 
 // Récupérer le jeton reCAPTCHA envoyé depuis le formulaire
 $captcha = $_POST['g-recaptcha-response'];
