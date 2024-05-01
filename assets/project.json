@@ -34,5 +34,11 @@
         "description": "The first french-community based website to snitch on bad behavior on minecraft servers.",
         "link": "https://plsban.me",
         "img": "./images/projects/snitch.png"
+    },
+    {
+        "title": "Crepes et Cie",
+        "description": "A website made with WIX for a Crêpes restaurant in Châtel-St-Denis. The goal was to learn WIX.",
+        "link": "https://crepescie.ch",
+        "img": "./images/projects/crepescie.png"
     }
 ]
