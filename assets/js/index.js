@@ -605,7 +605,7 @@ let animationRunning = false
 
 const profileUsernameAnimationAdd = () => {
     if (animationRunning) {
-        console.log("Animation is already running...")
+        console.warn("Eh oh! Calmos là. L'animation est déjà en cours...")
         return
     } else {
         animationRunning = true
@@ -642,7 +642,7 @@ const profileUsernameAnimationAdd = () => {
             element.innerText = "THOMA BOEHI"
         }, 800)
 
-        setTimeout(profileUsernameAnimationRemove, 2000)
+        setTimeout(profileUsernameAnimationRemove, 4000)
     }
 
 
