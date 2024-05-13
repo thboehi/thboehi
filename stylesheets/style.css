@@ -5,6 +5,12 @@
   touch-action: manipulation;
 }
 
+:root{
+  --black: #1d1d1d;
+  --red: #ff595e;
+  --red: #0d8147;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button,
@@ -15,7 +21,7 @@ input {
 
 html {
   overflow-x: hidden;
-  background-color: #1d1d1d;
+  background-color: var(--black);
 }
 
 .form-captcha{
@@ -63,7 +69,7 @@ html {
 }
 #entry-container #entry-text-container #card {
   aspect-ratio: 1.5/1;
-  background-color: #ff595e;
+  background-color: var(--red);
   display: block;
   border-radius: 10px;
   display: flex;
@@ -171,7 +177,7 @@ html {
   font-family: basic-sans, sans-serif;
   font-weight: 600;
   font-style: normal;
-  border-radius: 5px;
+  
   transition: transform 300ms ease-out, background-color 300ms ease-out, color 300ms ease-out, opacity 300ms ease-out;
   cursor: pointer;
 }
@@ -180,13 +186,13 @@ html {
 }
 #entry-container #entry-button:hover {
   transform: scale(0.99);
-  color: #1d1d1d;
+  color: var(--black);
   background-color: #f2f4f3;
 }
 #entry-container #entry-bg {
   height: 150%;
   width: 250%;
-  background-color: #ff595e;
+  background-color: var(--red);
   border-radius: 50%;
   display: inline-block;
   position: absolute;
@@ -332,7 +338,7 @@ html {
 }
 #main-container #main-profile-container #contact-button:hover {
   background-color: #f2f4f3;
-  color: #1d1d1d;
+  color: var(--black);
   transform: scale(0.95);
   font-weight: 600;
 }
@@ -435,7 +441,7 @@ html {
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #1d1d1d;
+  background-color: var(--black);
   opacity: 0;
   transition: opacity 300ms ease-in-out;
 }
@@ -777,7 +783,7 @@ html {
 }
 #form-container #form-button-submit:hover {
   transform: scale(0.95);
-  color: #1d1d1d;
+  color: var(--black);
   background-color: #f2f4f3;
   font-weight: 600;
 }
@@ -824,7 +830,12 @@ html {
 
 @media screen and (max-width: 768px) {
   #entry-container #entry-text-container #card{
+    display: none;
     padding: 30px 60px;
+  }
+  #logo-mobile{
+    width: 80%;
+    pointer-events: none;
   }
   #logo{
     width: 180px;
@@ -919,6 +930,11 @@ html {
   #form-container #form-back-container {
     width: 45px;
     height: 45px;
+  }
+}
+@media screen and (min-width: 768px) {
+  #logo-mobile{
+    display: none;
   }
 }
 @keyframes bounce {
