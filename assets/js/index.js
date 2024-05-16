@@ -16,6 +16,8 @@ let isWatching = false
 let lastClick
 //Variable to tell which project is active. By default, first is active
 let currentProject = 1
+//Variable for the contact form button
+let contactButton = document.getElementById("contact-button")
 //Get the file project.json where all the projects are stored. Easy to add new projects
 fetch('./assets/project.json')
   .then(response => response.json())
@@ -225,6 +227,8 @@ const pauseAuto = () => {
 
 //Function to open the form page
 const openForm = () => {
+    //Block the contact button
+    contactButton.setAttribute("disabled", "")
     //If the form is still closing, stop the function
     if(closingForm){return}
     //Remove the attribute style from the form-container to remove display: none
@@ -273,6 +277,8 @@ const closeForm = () => {
     document.querySelector('meta[name="theme-color"]').setAttribute("content", "#1d1d1d")
     //Timeout to launch specified action after 2,2 seconds
     setTimeout(function() {
+        //Unblock the contact button
+        contactButton.removeAttribute("disabled")
         //Hide the form-container so it isn't visible when scrolling down.
         document.getElementById("form-container").setAttribute("style", "display: none;")
         //Disable closingForm, so the user can open it again
