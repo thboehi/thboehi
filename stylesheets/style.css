@@ -7,8 +7,8 @@
 
 :root{
   --black: #1d1d1d;
-  --red: #ff595e;
-  --red: #0d8147;
+  --second: #ff595e;
+  --main: #5450ff;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -69,7 +69,7 @@ html {
 }
 #entry-container #entry-text-container #card {
   aspect-ratio: 1.5/1;
-  background-color: var(--red);
+  background-color: var(--main);
   display: block;
   border-radius: 10px;
   display: flex;
@@ -192,7 +192,7 @@ html {
 #entry-container #entry-bg {
   height: 150%;
   width: 250%;
-  background-color: var(--red);
+  background-color: var(--main);
   border-radius: 50%;
   display: inline-block;
   position: absolute;
@@ -333,14 +333,17 @@ html {
   border: #f2f4f3 solid 2px;
   padding: 5px 20px;
   box-sizing: border-box;
-  transition: background-color 300ms ease-in-out, color 300ms ease-in-out, transform 300ms ease-in-out, font-weight 300ms ease-in-out;
+  transition: background-color 300ms ease-in-out, color 300ms ease-in-out, transform 300ms ease-in-out, font-weight 300ms ease-in-out, opacity 300ms ease-in-out;
   cursor: pointer;
 }
 #main-container #main-profile-container #contact-button:hover {
   background-color: #f2f4f3;
   color: var(--black);
-  transform: scale(0.95);
-  font-weight: 600;
+  transform: scale(0.99);
+}
+#main-container #main-profile-container #contact-button[disabled]{
+  pointer-events: none;
+  opacity: 0;
 }
 #main-container #main-project-container {
   margin-top: 100px;
@@ -794,7 +797,7 @@ html {
 #form-container #form-bg {
   height: 150%;
   width: 250%;
-  background-color: #29335c;
+  background-color: var(--main);
   border-radius: 50%;
   display: inline-block;
   position: absolute;
