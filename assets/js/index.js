@@ -606,6 +606,13 @@ tippy('#phone', {
     content: 'Numéro suisse uniquement</br>au format <strong>07x ou 00417x</strong>',
     allowHTML: true,
 });
+tippy('.link-button', {
+    content(reference) {
+        const img = reference.querySelector('img');
+        return img ? img.alt : '#';
+    },
+    allowHTML: true,
+});
 
 let animationRunning = false
 
