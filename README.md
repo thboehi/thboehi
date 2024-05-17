@@ -32,3 +32,5 @@ I'm a student in web development at the [SAE Institute](https://sae.swiss) in Ge
 ![visualstudiocode](https://img.shields.io/badge/vs_code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)
 ![insomnia](https://img.shields.io/badge/insomnia-4000BF?style=for-the-badge&logo=insomnia&logoColor=white)
 ![adobe](https://img.shields.io/badge/adobe-FF0000?style=for-the-badge&logo=adobe&logoColor=white)
+
+<small>(Hostinger is a referral link, I use their services since 2013)</small>
