@@ -311,15 +311,16 @@ html {
 #main-container #main-profile-container #main-profile-socials-container {
   display: flex;
   flex-direction: row;
-  gap: 10px;
 }
 #main-container #main-profile-container #main-profile-socials-container img {
   aspect-ratio: 1;
-  width: 35px;
+  width: 27px;
+  object-fit: cover;
   transition: transform 300ms ease-in-out, opacity 300ms ease-in-out;
+  padding: 10px;
 }
 #main-container #main-profile-container #main-profile-socials-container img:hover {
-  transform: scale(0.9);
+  transform: scale(0.95);
   opacity: 1;
 }
 #main-container #main-profile-container #main-profile-socials-container:hover img:not(:hover) {
