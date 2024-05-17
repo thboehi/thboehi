@@ -41,6 +41,8 @@ let projectTitle = document.querySelector(".project-title")
 let projectDescription = document.querySelector(".project-description")
 let projectContainer = document.querySelector(".image-container")
 let projectNumber = document.querySelector(".project-number")
+//Get the form submit error/confirm box
+let resultMessageBox = document.getElementById("form-confirm-message");
 
 //Boolean to prevent opening the form before it has finished closing it
 let closingForm = false
@@ -252,7 +254,7 @@ const openForm = () => {
             //This will make the element form-container the correct format of the screen to prevent horizontal scrolling
             document.getElementById("form-container").setAttribute("style", "overflow: hidden;")
             //Change the theme of the page to the color of the background to match everything and make a cosy place where the user would want to spend the rest of his life
-            document.querySelector('meta[name="theme-color"]').setAttribute("content", "#29335c")
+            document.querySelector('meta[name="theme-color"]').setAttribute("content", "#5450ff")
             //Hide the main page
             document.getElementById("main-container").setAttribute("style", "display: none;")
         }, 2200);
@@ -548,7 +550,7 @@ document.getElementById("form").addEventListener("submit", function (event) {
         //Hide the info message
         document.getElementById("form-info-message").setAttribute("data-state", "hidden")
         //Show the confirmation message
-        document.getElementById("form-confirm-message").setAttribute("data-state", "visible")
+        resultMessageBox.setAttribute("data-state", "visible")
         //Hide the form container
         document.getElementById("form").setAttribute("data-state", "hidden")
         //Hide the send button
@@ -574,12 +576,11 @@ document.getElementById("form").addEventListener("submit", function (event) {
                 xhr.onreadystatechange = function () {
                     if (xhr.readyState === XMLHttpRequest.DONE) {
                         // Mettre à jour le conteneur de réponse avec le message de retour
-                        let responseMessage = document.getElementById("form-confirm-message");
                         if (xhr.status === 200) {
-                            responseMessage.innerHTML = "Merci! Le formulaire a bien été envoyé. Vous recevrez une copie sous peu.";
+                            resultMessageBox.innerHTML = "Merci! Le formulaire a bien été envoyé. Vous recevrez une copie sous peu.";
                         } else {
-                            responseMessage.innerHTML = "Une erreur est survenue lors de l'envoi de l'email.";
-                            responseMessage.setAttribute("data-error", "true");
+                            resultMessageBox.innerHTML = "Une erreur est survenue lors de l'envoi de l'email.";
+                            resultMessageBox.setAttribute("data-error", "true");
                         }
                     }
                 };

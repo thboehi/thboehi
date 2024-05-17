@@ -8,7 +8,6 @@
 :root{
   --white: #f2f4f3;
   --black: #1d1d1d;
-  --second: #ff595e;
   --main: #5450ff;
   --error: #FF3B3B;
   --correct: #00FF00;
@@ -130,60 +129,6 @@ html {
   height: auto;
   position: absolute;
 }
-/*
-#entry-container #entry-text-container #card h1::after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: "THOMAS";
-  color: transparent;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0);
-  transform: perspective(1000px);
-  transform: translateZ(-60px);
-  transform-style: preserve-3d;
-  transition: 300ms ease-out;
-}
-#entry-container #entry-text-container #card:hover h1::after {
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-#entry-container #entry-text-container h1 {
-  text-align: center;
-  vertical-align: center;
-  color: #F2F4F3;
-  font-size: 4rem;
-  font-family: "Rhastelie";
-  font-weight: 400;
-  transform: perspective(1000px);
-  transform: translateZ(60px);
-  transform-style: preserve-3d;
-}
-#entry-container #entry-text-container #card p::after {
-  position: absolute;
-  top: 0;
-  left: 0;
-  content: ".webdev";
-  color: transparent;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0);
-  transform: perspective(1000px);
-  transform: translateZ(-60px);
-  transform-style: preserve-3d;
-  transition: 300ms ease-out;
-}
-#entry-container #entry-text-container #card:hover p::after {
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
-}
-#entry-container #entry-text-container p {
-  text-align: center;
-  vertical-align: center;
-  color: #F2F4F3;
-  font-family: basic-sans, sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  transform: perspective(1000px);
-  transform: translateZ(60px);
-  transform-style: preserve-3d;
-}
-*/
 #entry-container #entry-button {
   all: unset;
   border: #f2f4f3 solid 3px;
@@ -689,10 +634,10 @@ html {
   background-color: var(--error);
 }
 #form-container #form-formulaire-container #form-info-message {
-  background-color: rgba(242, 244, 243, 0.2941176471);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 #form-container #form-formulaire-container #form-confirm-message {
-  background-color: rgba(0, 255, 0, 0.4);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 #form-container #form-formulaire-container #form-confirm-message[data-error="true"] {
