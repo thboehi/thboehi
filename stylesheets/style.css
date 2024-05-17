@@ -6,9 +6,12 @@
 }
 
 :root{
+  --white: #f2f4f3;
   --black: #1d1d1d;
   --second: #ff595e;
   --main: #5450ff;
+  --error: #FF3B3B;
+  --correct: #00FF00;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -17,6 +20,16 @@ input::-webkit-inner-spin-button,
 input {
   -webkit-appearance: none;
           appearance: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--white);
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #23232329;
 }
 
 html {
@@ -269,8 +282,8 @@ html {
      -moz-user-select: none;
           user-select: none;
   margin-bottom: 10px;
-  cursor: none;
   transition: transform 100ms ease-out, border 100ms ease-out, box-shadow 100ms ease-out;
+  cursor: none;
 }
 
 #main-container #main-profile-container #main-name-username #profile-pic:hover {
@@ -672,7 +685,7 @@ html {
   display: block;
 }
 #form-container #form-formulaire-container #form-error-message {
-  background-color: rgba(255, 0, 0, 0.4);
+  background-color: var(--error);
 }
 #form-container #form-formulaire-container #form-info-message {
   background-color: rgba(242, 244, 243, 0.2941176471);
@@ -682,7 +695,7 @@ html {
 }
 
 #form-container #form-formulaire-container #form-confirm-message[data-error="true"] {
-  background-color: rgba(255, 0, 0, 0.4);
+  background-color: var(--error);
 }
 
 #form-container #form-formulaire-container form {
@@ -743,7 +756,7 @@ html {
   border-radius: 0;
 }
 #form-container #form-formulaire-container form .form-input-container input[data-missing=true] {
-  background-color: rgba(255, 0, 0, 0.4);
+  background-color: var(--error);
 }
 #form-container #form-formulaire-container form .form-input-container input:focus, #form-container #form-formulaire-container form .form-input-container textarea:focus {
   background-color: rgba(242, 244, 243, 0.2941176471);
@@ -762,7 +775,7 @@ html {
   height: 100px;
 }
 #form-container #form-formulaire-container form .form-input-container textarea[data-missing=true] {
-  background-color: rgba(255, 0, 0, 0.4);
+  background-color: var(--error);
 }
 #form-container #form-formulaire-container form .form-input-container label {
   font-size: 0.7em;
