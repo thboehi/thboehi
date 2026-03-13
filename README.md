@@ -1,17 +1,17 @@
 # Hi, I'm Thoma(s) ! 👋
 
 
-## 🎨 Origin Studio
-**Origin Studio SNC** — creative studio co-founded by [Eric](https://github.com/ElioTourvieille/), [Chadi](https://github.com/chadicham/) and me.
+## 🎨 nickel.
+**Nickel Studio, Titulaire Böhi** — creative studio I founded in Switzerland.
 
-<a href="https://origin-studio.ch">
-  <img src="https://origin-studio.ch/img/logo_origin_full.svg" alt="Origin Studio" height="48" width="auto" />
+<a href="https://nickelstudio.ch">
+  <img src="https://nickelstudio.ch/assets/logo/svg/full_r.svg" alt="nickel." height="48" width="auto" />
 </a>
 
 ## 👨🏽 About Me
 I'm a web developer, **First Certificate graduate of a BSc in Web Development**, based in Switzerland.  
-I also **co-founded Origin Studio SNC** with two partners — a creative and tech-focused studio.  
-👉 https://origin-studio.ch
+I also **founded nickel.** — a creative and tech-focused studio.  
+👉 https://nickelstudio.ch
 
 ## 🔗 Links
 [![portfolio](https://img.shields.io/badge/thbo.ch-5450ff?style=for-the-badge&logo=ko-fi&logoColor=white)](https://thbo.ch/)
